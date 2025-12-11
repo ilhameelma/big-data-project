@@ -1,0 +1,140 @@
+version: "3.8"
+
+services:
+  # ------------------------------
+  # 1. HDFS - Namenode
+  # ------------------------------
+  namenode:
+    image: bde2020/hadoop-namenode:2.0.0-hadoop3.2.1-java8
+    container_name: namenode
+    environment:
+    
+      - CLUSTER_NAME=test_cluster
+      - CORE_CONF_fs_defaultFS=hdfs://namenode:9000
+      - HDFS_CONF_dfs_namenode_rpc-address=namenode:9000
+      - HDFS_CONF_dfs_namenode_http-address=namenode:9870
+      - HDFS_CONF_dfs_datanode_address=0.0.0.0:9866
+      - HDFS_CONF_dfs_datanode_http_address=0.0.0.0:9864
+      - HDFS_CONF_dfs_datanode_ipc_address=0.0.0.0:9867
+
+      - CLUSTER_NAME=test_cluster
+    ports:
+      - "9870:9870"   # Web UI Namenode
+      - "9000:9000"   # HDFS service port
+    volumes:
+      - namenode_data:/hadoop/dfs/name
+    networks:
+      - pipeline-net
+
+  # ------------------------------
+  # 2. HDFS - Datanode
+  # ------------------------------
+  datanode:
+    image: bde2020/hadoop-datanode:2.0.0-hadoop3.2.1-java8
+    container_name: datanode
+    environment:
+      - CLUSTER_NAME=test_cluster
+      - CORE_CONF_fs_defaultFS=hdfs://namenode:9000
+      - HDFS_CONF_dfs_namenode_rpc-address=namenode:9000
+      - HDFS_CONF_dfs_namenode_http-address=namenode:9870
+      - HDFS_CONF_dfs_datanode_address=0.0.0.0:9866
+      - HDFS_CONF_dfs_datanode_http_address=0.0.0.0:9864
+      - HDFS_CONF_dfs_datanode_ipc_address=0.0.0.0:9867
+      - CLUSTER_NAME=test_cluster
+      - CORE_CONF_fs_defaultFS=hdfs://namenode:9000
+    volumes:
+      - datanode_data:/hadoop/dfs/data
+    ports:
+      - "9864:9864"   # Web UI Datanode
+    networks:
+      - pipeline-net
+    depends_on:
+      - namenode
+
+  # ------------------------------
+  # 3. PostgreSQL (Master Data)
+  # ------------------------------
+  postgres:
+    image: postgres:15
+    container_name: postgres
+    environment:
+      POSTGRES_USER: pguser
+      POSTGRES_PASSWORD: pgpass
+      POSTGRES_DB: procurement
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - pipeline-net
+
+  # ------------------------------
+  # 4. Presto (Compute engine)
+  # ------------------------------
+  presto:
+    image: trinodb/trino
+    container_name: presto
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./presto/catalog:/etc/trino/catalog
+    networks:
+      - pipeline-net
+    depends_on:
+      - namenode
+      - postgres
+  
+  metastore:
+    image: apache/hive:3.1.3
+    container_name: metastore
+    environment:
+      - SERVICE_NAME=metastore
+      - HIVE_METASTORE_DB_HOST=postgres
+      - HIVE_METASTORE_DB_NAME=hive_metastore
+      - HIVE_METASTORE_DB_USER=pguser
+      - HIVE_METASTORE_DB_PASSWORD=pgpass
+    ports:
+      - "9083:9083"
+    networks:
+      - pipeline-net
+    depends_on:
+      - postgres
+      - namenode
+
+
+  # ------------------------------
+  # 5. Python ETL Node
+  # ------------------------------
+  python-app:
+    build:
+      context: ./scripts
+
+    container_name: python-app
+    environment:
+      HDFS_HOST: namenode
+      HDFS_PORT: 9000
+      POSTGRES_HOST: postgres
+      POSTGRES_PORT: 5432
+      POSTGRES_DB: procurement
+      POSTGRES_USER: pguser
+      POSTGRES_PASSWORD: pgpass
+    networks:
+      - pipeline-net
+    depends_on:
+      - namenode
+      - postgres
+
+# ------------------------------
+# Volumes
+# ------------------------------
+volumes:
+  namenode_data:
+  datanode_data:
+  pgdata:
+
+# ------------------------------
+# Networks
+# ------------------------------
+networks:
+  pipeline-net:
+    driver: bridge

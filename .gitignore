@@ -1,0 +1,14 @@
+# Données Docker/volumes
+postgres-data/
+presto-data/
+hdfs/
+project_data/
+data/
+
+# Fichiers temporaires/logs
+logs/
+*.log
+
+# Environnements virtuels Python
+venv/
+.env
