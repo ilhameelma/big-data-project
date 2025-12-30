@@ -1,140 +1,150 @@
-version: "3.8"
+networks:
+  procurement-net:
+    driver: bridge
+
+volumes:
+  namenode-data:
+  datanode1-data:
+  datanode2-data:
+  postgres-data:
 
 services:
-  # ------------------------------
-  # 1. HDFS - Namenode
-  # ------------------------------
+  # HDFS NAMENODE
   namenode:
     image: bde2020/hadoop-namenode:2.0.0-hadoop3.2.1-java8
     container_name: namenode
-    environment:
-    
-      - CLUSTER_NAME=test_cluster
-      - CORE_CONF_fs_defaultFS=hdfs://namenode:9000
-      - HDFS_CONF_dfs_namenode_rpc-address=namenode:9000
-      - HDFS_CONF_dfs_namenode_http-address=namenode:9870
-      - HDFS_CONF_dfs_datanode_address=0.0.0.0:9866
-      - HDFS_CONF_dfs_datanode_http_address=0.0.0.0:9864
-      - HDFS_CONF_dfs_datanode_ipc_address=0.0.0.0:9867
-
-      - CLUSTER_NAME=test_cluster
+    hostname: namenode
     ports:
-      - "9870:9870"   # Web UI Namenode
-      - "9000:9000"   # HDFS service port
+      - "9870:9870"
+      - "9000:9000"
     volumes:
-      - namenode_data:/hadoop/dfs/name
+      - namenode-data:/hadoop/dfs/name
+      - ./data:/data
+    environment:
+      - CLUSTER_NAME=procurement_cluster
+      - CORE_CONF_fs_defaultFS=hdfs://namenode:9000
+      - CORE_CONF_hadoop_http_staticuser_user=root
+      - HDFS_CONF_dfs_replication=2
+      - HDFS_CONF_dfs_namenode_datanode_registration_ip___hostname___check=false
+      - HDFS_CONF_dfs_permissions_enabled=false
+      - HDFS_CONF_dfs_webhdfs_enabled=true
     networks:
-      - pipeline-net
+      - procurement-net
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9870"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
 
-  # ------------------------------
-  # 2. HDFS - Datanode
-  # ------------------------------
-  datanode:
+  # HDFS DATANODE 1
+  datanode1:
     image: bde2020/hadoop-datanode:2.0.0-hadoop3.2.1-java8
-    container_name: datanode
-    environment:
-      - CLUSTER_NAME=test_cluster
-      - CORE_CONF_fs_defaultFS=hdfs://namenode:9000
-      - HDFS_CONF_dfs_namenode_rpc-address=namenode:9000
-      - HDFS_CONF_dfs_namenode_http-address=namenode:9870
-      - HDFS_CONF_dfs_datanode_address=0.0.0.0:9866
-      - HDFS_CONF_dfs_datanode_http_address=0.0.0.0:9864
-      - HDFS_CONF_dfs_datanode_ipc_address=0.0.0.0:9867
-      - CLUSTER_NAME=test_cluster
-      - CORE_CONF_fs_defaultFS=hdfs://namenode:9000
+    container_name: datanode1
+    hostname: datanode1
     volumes:
-      - datanode_data:/hadoop/dfs/data
-    ports:
-      - "9864:9864"   # Web UI Datanode
-    networks:
-      - pipeline-net
-    depends_on:
-      - namenode
-
-  # ------------------------------
-  # 3. PostgreSQL (Master Data)
-  # ------------------------------
-  postgres:
-    image: postgres:15
-    container_name: postgres
+      - datanode1-data:/hadoop/dfs/data
     environment:
-      POSTGRES_USER: pguser
-      POSTGRES_PASSWORD: pgpass
-      POSTGRES_DB: procurement
+      - CORE_CONF_fs_defaultFS=hdfs://namenode:9000
+      - CORE_CONF_hadoop_http_staticuser_user=root
+      - HDFS_CONF_dfs_replication=2
+    depends_on:
+      namenode:
+        condition: service_healthy
+    networks:
+      - procurement-net
+
+  # HDFS DATANODE 2
+  datanode2:
+    image: bde2020/hadoop-datanode:2.0.0-hadoop3.2.1-java8
+    container_name: datanode2
+    hostname: datanode2
+    volumes:
+      - datanode2-data:/hadoop/dfs/data
+    environment:
+      - CORE_CONF_fs_defaultFS=hdfs://namenode:9000
+      - CORE_CONF_hadoop_http_staticuser_user=root
+      - HDFS_CONF_dfs_replication=2
+    depends_on:
+      namenode:
+        condition: service_healthy
+    networks:
+      - procurement-net
+
+  # POSTGRESQL
+  postgres:
+    image: postgres:14-alpine
+    container_name: postgres
+    hostname: postgres
     ports:
       - "5432:5432"
+    environment:
+      POSTGRES_DB: procurement_db
+      POSTGRES_USER: procurement_user
+      POSTGRES_PASSWORD: procurement_pass
     volumes:
-      - pgdata:/var/lib/postgresql/data
+      - postgres-data:/var/lib/postgresql/data
+      - ./sql/01_schema.sql:/docker-entrypoint-initdb.d/01_schema.sql
+      - ./sql/02_master_data.sql:/docker-entrypoint-initdb.d/02_master_data.sql
     networks:
-      - pipeline-net
+      - procurement-net
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U procurement_user -d procurement_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
-  # ------------------------------
-  # 4. Presto (Compute engine)
-  # ------------------------------
-  presto:
-    image: trinodb/trino
-    container_name: presto
+  # TRINO (version simple SANS Hive Metastore)
+  trino:
+    image: trinodb/trino:400
+    container_name: trino
+    hostname: trino
     ports:
       - "8080:8080"
     volumes:
-      - ./presto/catalog:/etc/trino/catalog
-    networks:
-      - pipeline-net
+      - ./config/presto/config.properties:/etc/trino/config.properties
+      - ./config/presto/catalog:/etc/trino/catalog
+      - ./config/presto/core-site.xml:/etc/trino/core-site.xml
     depends_on:
-      - namenode
-      - postgres
-  
-  metastore:
-    image: apache/hive:3.1.3
-    container_name: metastore
-    environment:
-      - SERVICE_NAME=metastore
-      - HIVE_METASTORE_DB_HOST=postgres
-      - HIVE_METASTORE_DB_NAME=hive_metastore
-      - HIVE_METASTORE_DB_USER=pguser
-      - HIVE_METASTORE_DB_PASSWORD=pgpass
-    ports:
-      - "9083:9083"
+      namenode:
+        condition: service_healthy
+      postgres:
+        condition: service_healthy
     networks:
-      - pipeline-net
-    depends_on:
-      - postgres
-      - namenode
+      - procurement-net
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/v1/info"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
 
-
-  # ------------------------------
-  # 5. Python ETL Node
-  # ------------------------------
-  python-app:
+  # ORCHESTRATEUR
+  orchestrator:
     build:
-      context: ./scripts
-
-    container_name: python-app
+      context: .
+      dockerfile: Dockerfile
+    container_name: orchestrator
+    hostname: orchestrator
+    volumes:
+      - ./scripts:/app/scripts
+      - ./data:/app/data
+      - ./output:/app/output
+      - ./logs:/app/logs
+      - ./sql:/app/sql
     environment:
-      HDFS_HOST: namenode
-      HDFS_PORT: 9000
-      POSTGRES_HOST: postgres
-      POSTGRES_PORT: 5432
-      POSTGRES_DB: procurement
-      POSTGRES_USER: pguser
-      POSTGRES_PASSWORD: pgpass
-    networks:
-      - pipeline-net
+      - HDFS_NAMENODE=hdfs://namenode:9000
+      - PRESTO_HOST=trino
+      - PRESTO_PORT=8080
+      - POSTGRES_HOST=postgres
+      - POSTGRES_PORT=5432
+      - POSTGRES_DB=procurement_db
+      - POSTGRES_USER=procurement_user
+      - POSTGRES_PASSWORD=procurement_pass
+      - TZ=Africa/Casablanca
     depends_on:
-      - namenode
-      - postgres
-
-# ------------------------------
-# Volumes
-# ------------------------------
-volumes:
-  namenode_data:
-  datanode_data:
-  pgdata:
-
-# ------------------------------
-# Networks
-# ------------------------------
-networks:
-  pipeline-net:
-    driver: bridge
+      trino:
+        condition: service_healthy
+      postgres:
+        condition: service_healthy
+    networks:
+      - procurement-net
+    command: tail -f /dev/null

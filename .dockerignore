@@ -1,0 +1,32 @@
+# Git
+.git
+.gitignore
+
+# Python
+__pycache__
+*.pyc
+venv/
+*.egg-info/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# Données générées
+data/generated/
+data/raw/orders/*
+data/raw/stock/*
+output/
+logs/*.log
+
+# Configuration
+.env
+
+# Docker
+docker-compose.override.yml
+
+# Divers
+*.tmp
+*.backup
