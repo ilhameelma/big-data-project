@@ -1,0 +1,29 @@
+{
+  "supplier_id": "SUP003",
+  "supplier_name": "Hernandez-Knight",
+  "order_date": "2025-12-02",
+  "total_items": 1,
+  "total_value": 14.96,
+  "generated_at": "2026-01-04T10:27:12.205776",
+  "items": [
+    {
+      "order_id": "2b4079de-2646-4f8d-8bdb-46e9db13fba6",
+      "order_date": "2025-12-02",
+      "supplier_id": "SUP003",
+      "supplier_name": "Hernandez-Knight",
+      "sku_id": "SKU000051",
+      "product_name": "Red Grocery Basic",
+      "demand": 22,
+      "available_stock": 10,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 22,
+      "order_quantity": 22,
+      "pack_size": 1,
+      "unit_price": 0.68,
+      "total_price": 14.96,
+      "lead_time_days": 6,
+      "calculated_at": "2026-01-04T10:27:12.199642"
+    }
+  ]
+}

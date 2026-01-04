@@ -1,0 +1,48 @@
+{
+  "supplier_id": "SUP002",
+  "supplier_name": "Kennedy-Liu",
+  "order_date": "2025-12-02",
+  "total_items": 2,
+  "total_value": 266.1,
+  "generated_at": "2026-01-04T10:27:12.226179",
+  "items": [
+    {
+      "order_id": "336cd372-5ed6-4062-b72b-e0dd52aa9349",
+      "order_date": "2025-12-02",
+      "supplier_id": "SUP002",
+      "supplier_name": "Kennedy-Liu",
+      "sku_id": "SKU000181",
+      "product_name": "Free Grocery Organic",
+      "demand": 41,
+      "available_stock": 50,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 1,
+      "order_quantity": 10,
+      "pack_size": 1,
+      "unit_price": 16.92,
+      "total_price": 169.20000000000002,
+      "lead_time_days": 3,
+      "calculated_at": "2026-01-04T10:27:12.200033"
+    },
+    {
+      "order_id": "cc5e5976-4021-4cbd-8588-66de36a8ad9c",
+      "order_date": "2025-12-02",
+      "supplier_id": "SUP002",
+      "supplier_name": "Kennedy-Liu",
+      "sku_id": "SKU000495",
+      "product_name": "Forward Bakery Pro",
+      "demand": 44,
+      "available_stock": 50,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 4,
+      "order_quantity": 6,
+      "pack_size": 6,
+      "unit_price": 16.15,
+      "total_price": 96.89999999999999,
+      "lead_time_days": 4,
+      "calculated_at": "2026-01-04T10:27:12.200893"
+    }
+  ]
+}

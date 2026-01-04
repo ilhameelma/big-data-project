@@ -1,0 +1,29 @@
+{
+  "supplier_id": "SUP013",
+  "supplier_name": "Harris Ltd",
+  "order_date": "2025-12-02",
+  "total_items": 1,
+  "total_value": 192.0,
+  "generated_at": "2026-01-04T10:27:12.234795",
+  "items": [
+    {
+      "order_id": "0f0b6e56-2ed3-407c-943e-2802057164d6",
+      "order_date": "2025-12-02",
+      "supplier_id": "SUP013",
+      "supplier_name": "Harris Ltd",
+      "sku_id": "SKU000303",
+      "product_name": "Red Bakery Organic",
+      "demand": 46,
+      "available_stock": 50,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 6,
+      "order_quantity": 12,
+      "pack_size": 12,
+      "unit_price": 16.0,
+      "total_price": 192.0,
+      "lead_time_days": 5,
+      "calculated_at": "2026-01-04T10:27:12.200346"
+    }
+  ]
+}

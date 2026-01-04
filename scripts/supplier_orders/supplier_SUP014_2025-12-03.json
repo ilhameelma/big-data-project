@@ -1,0 +1,88 @@
+{
+  "supplier_id": "SUP014",
+  "supplier_name": "Mitchell-Durham",
+  "order_date": "2025-12-03",
+  "total_items": 3,
+  "total_value": 1221.9,
+  "generated_at": "2026-01-04T10:45:59.114948",
+  "items": [
+    {
+      "order_id": "7f2e31cb-3a94-4e9f-b714-5d4f4f544966",
+      "order_date": "2025-12-03",
+      "supplier_id": "SUP014",
+      "supplier_name": "Mitchell-Durham",
+      "sku_id": "SKU000060",
+      "product_name": "Upon Frozen Gold",
+      "demand": 51,
+      "available_stock": 50,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 11,
+      "order_quantity": 24,
+      "pack_size": 24,
+      "unit_price": 19.1,
+      "total_price": 458.40000000000003,
+      "lead_time_days": 3,
+      "calculated_at": "2026-01-04T10:45:59.014150",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 51,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 51 + 10 - 50) = 11"
+      }
+    },
+    {
+      "order_id": "879c2971-9c04-4472-a591-30c1752c3c40",
+      "order_date": "2025-12-03",
+      "supplier_id": "SUP014",
+      "supplier_name": "Mitchell-Durham",
+      "sku_id": "SKU000100",
+      "product_name": "Way Dairy Basic",
+      "demand": 53,
+      "available_stock": 50,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 13,
+      "order_quantity": 24,
+      "pack_size": 6,
+      "unit_price": 18.1,
+      "total_price": 434.40000000000003,
+      "lead_time_days": 4,
+      "calculated_at": "2026-01-04T10:45:59.018816",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 53,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 53 + 10 - 50) = 13"
+      }
+    },
+    {
+      "order_id": "2c680cdd-b237-41ed-ae24-d480a72b6a65",
+      "order_date": "2025-12-03",
+      "supplier_id": "SUP014",
+      "supplier_name": "Mitchell-Durham",
+      "sku_id": "SKU000278",
+      "product_name": "Magazine Bakery Pro",
+      "demand": 69,
+      "available_stock": 50,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 29,
+      "order_quantity": 30,
+      "pack_size": 6,
+      "unit_price": 10.97,
+      "total_price": 329.1,
+      "lead_time_days": 6,
+      "calculated_at": "2026-01-04T10:45:59.038453",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 69,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 69 + 10 - 50) = 29"
+      }
+    }
+  ]
+}

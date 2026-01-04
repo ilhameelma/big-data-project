@@ -1,0 +1,29 @@
+{
+  "supplier_id": "SUP019",
+  "supplier_name": "Moore-Johnson",
+  "order_date": "2025-12-02",
+  "total_items": 1,
+  "total_value": 469.43999999999994,
+  "generated_at": "2026-01-04T10:27:12.231856",
+  "items": [
+    {
+      "order_id": "ffc0de32-2988-4102-91b8-a712fc10d063",
+      "order_date": "2025-12-02",
+      "supplier_id": "SUP019",
+      "supplier_name": "Moore-Johnson",
+      "sku_id": "SKU000242",
+      "product_name": "Team Grocery Organic",
+      "demand": 41,
+      "available_stock": 50,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 1,
+      "order_quantity": 48,
+      "pack_size": 12,
+      "unit_price": 9.78,
+      "total_price": 469.43999999999994,
+      "lead_time_days": 6,
+      "calculated_at": "2026-01-04T10:27:12.200179"
+    }
+  ]
+}

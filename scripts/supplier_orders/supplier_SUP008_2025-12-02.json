@@ -1,0 +1,29 @@
+{
+  "supplier_id": "SUP008",
+  "supplier_name": "Chandler LLC",
+  "order_date": "2025-12-02",
+  "total_items": 1,
+  "total_value": 105.39999999999999,
+  "generated_at": "2026-01-04T10:27:12.240069",
+  "items": [
+    {
+      "order_id": "e6825950-96fa-4290-bb71-dc47297fa535",
+      "order_date": "2025-12-02",
+      "supplier_id": "SUP008",
+      "supplier_name": "Chandler LLC",
+      "sku_id": "SKU000344",
+      "product_name": "Develop Beverages Gold",
+      "demand": 42,
+      "available_stock": 50,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 2,
+      "order_quantity": 10,
+      "pack_size": 6,
+      "unit_price": 10.54,
+      "total_price": 105.39999999999999,
+      "lead_time_days": 2,
+      "calculated_at": "2026-01-04T10:27:12.200527"
+    }
+  ]
+}

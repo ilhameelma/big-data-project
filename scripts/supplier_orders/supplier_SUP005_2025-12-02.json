@@ -1,0 +1,29 @@
+{
+  "supplier_id": "SUP005",
+  "supplier_name": "Singleton PLC",
+  "order_date": "2025-12-02",
+  "total_items": 1,
+  "total_value": 40.300000000000004,
+  "generated_at": "2026-01-04T10:27:12.224273",
+  "items": [
+    {
+      "order_id": "b7b7af93-0470-4b16-848a-75709fc30df6",
+      "order_date": "2025-12-02",
+      "supplier_id": "SUP005",
+      "supplier_name": "Singleton PLC",
+      "sku_id": "SKU000180",
+      "product_name": "Eight Frozen Pro",
+      "demand": 45,
+      "available_stock": 50,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 5,
+      "order_quantity": 10,
+      "pack_size": 1,
+      "unit_price": 4.03,
+      "total_price": 40.300000000000004,
+      "lead_time_days": 3,
+      "calculated_at": "2026-01-04T10:27:12.200001"
+    }
+  ]
+}

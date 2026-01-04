@@ -1,0 +1,29 @@
+{
+  "supplier_id": "SUP010",
+  "supplier_name": "David and Sons",
+  "order_date": "2025-12-02",
+  "total_items": 1,
+  "total_value": 454.56000000000006,
+  "generated_at": "2026-01-04T10:27:12.245620",
+  "items": [
+    {
+      "order_id": "c3aec58e-388c-4eb2-922b-c8fcb73c617c",
+      "order_date": "2025-12-02",
+      "supplier_id": "SUP010",
+      "supplier_name": "David and Sons",
+      "sku_id": "SKU000428",
+      "product_name": "Seem Cleaning Gold",
+      "demand": 48,
+      "available_stock": 50,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 8,
+      "order_quantity": 48,
+      "pack_size": 1,
+      "unit_price": 9.47,
+      "total_price": 454.56000000000006,
+      "lead_time_days": 5,
+      "calculated_at": "2026-01-04T10:27:12.200738"
+    }
+  ]
+}

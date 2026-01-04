@@ -1,0 +1,31 @@
+{
+  "debug_date": "2026-01-04T10:23:00.390456",
+  "target_date": "2025-12-02",
+  "checks": [
+    {
+      "name": "orders_raw count",
+      "query": "SELECT COUNT(*) FROM hive.procurement.orders_raw WHERE date = '2025-12-02'",
+      "result": "\"4997\""
+    },
+    {
+      "name": "stock_raw count",
+      "query": "SELECT COUNT(*) FROM hive.procurement.stock_raw WHERE date = '2025-12-02'",
+      "result": "\"1500\""
+    },
+    {
+      "name": "products count",
+      "query": "SELECT COUNT(*) FROM postgresql.public.products",
+      "result": "\"2000\""
+    },
+    {
+      "name": "suppliers count",
+      "query": "SELECT COUNT(*) FROM postgresql.public.suppliers",
+      "result": "\"20\""
+    },
+    {
+      "name": "product_supplier count",
+      "query": "SELECT COUNT(*) FROM postgresql.public.product_supplier WHERE is_primary = true",
+      "result": "\"2000\""
+    }
+  ]
+}

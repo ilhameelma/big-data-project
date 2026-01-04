@@ -7,6 +7,7 @@ volumes:
   datanode1-data:
   datanode2-data:
   postgres-data:
+  cassandra-data:
 
 services:
   # HDFS NAMENODE
@@ -116,6 +117,21 @@ services:
       interval: 30s
       timeout: 10s
       retries: 5
+  cassandra:
+    image: cassandra:4.1
+    container_name: cassandra
+    hostname: cassandra
+    ports:
+      - "9042:9042"
+    environment:
+      - CASSANDRA_CLUSTER_NAME=procurement_cluster
+      - CASSANDRA_DC=dc1
+      - CASSANDRA_RACK=rack1
+      - CASSANDRA_ENDPOINT_SNITCH=GossipingPropertyFileSnitch
+    volumes:
+      - cassandra-data:/var/lib/cassandra
+    networks:
+      - procurement-net
 
   # ORCHESTRATEUR
   orchestrator:

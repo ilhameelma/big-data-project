@@ -1,0 +1,15 @@
+{
+  "date": "2026-01-04",
+  "timestamp": "2026-01-04T10:54:28.178197",
+  "checks": {
+    "keyspace": true,
+    "tables": false,
+    "structure_supplier_orders": true,
+    "structure_demand_calculations": true,
+    "structure_exceptions": true,
+    "count_supplier_orders": 0,
+    "count_demand_calculations": 0,
+    "count_exceptions": 0,
+    "integrity": true
+  }
+}

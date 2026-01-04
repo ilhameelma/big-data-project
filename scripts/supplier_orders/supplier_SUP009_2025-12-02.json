@@ -1,0 +1,29 @@
+{
+  "supplier_id": "SUP009",
+  "supplier_name": "Williams, Sullivan and Mckinney",
+  "order_date": "2025-12-02",
+  "total_items": 1,
+  "total_value": 19.28,
+  "generated_at": "2026-01-04T10:27:12.216519",
+  "items": [
+    {
+      "order_id": "c650ece3-ea89-4d6a-be10-4fa293311274",
+      "order_date": "2025-12-02",
+      "supplier_id": "SUP009",
+      "supplier_name": "Williams, Sullivan and Mckinney",
+      "sku_id": "SKU000114",
+      "product_name": "Series Dairy Basic",
+      "demand": 42,
+      "available_stock": 50,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 2,
+      "order_quantity": 2,
+      "pack_size": 1,
+      "unit_price": 9.64,
+      "total_price": 19.28,
+      "lead_time_days": 6,
+      "calculated_at": "2026-01-04T10:27:12.199841"
+    }
+  ]
+}
