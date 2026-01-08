@@ -1,0 +1,62 @@
+{
+  "supplier_id": "SUP017",
+  "supplier_name": "Tate, Rodriguez and Buck",
+  "order_date": "2025-12-04",
+  "total_items": 2,
+  "total_value": 188.5,
+  "generated_at": "2026-01-08T15:07:42.723931",
+  "items": [
+    {
+      "order_id": "788219f8-2f9c-4e45-84cb-f015d9cf3fb3",
+      "order_date": "2025-12-04",
+      "supplier_id": "SUP017",
+      "supplier_name": "Tate, Rodriguez and Buck",
+      "sku_id": "SKU000460",
+      "product_name": "Main Beverages Organic",
+      "demand": 41,
+      "available_stock": 50,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 1,
+      "order_quantity": 10,
+      "pack_size": 6,
+      "unit_price": 8.93,
+      "total_price": 89.3,
+      "lead_time_days": 4,
+      "calculated_at": "2026-01-08T15:07:42.651678",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 41,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 41 + 10 - 50) = 1"
+      }
+    },
+    {
+      "order_id": "0860a52a-16e8-489a-99bd-00e5e8b1ce23",
+      "order_date": "2025-12-04",
+      "supplier_id": "SUP017",
+      "supplier_name": "Tate, Rodriguez and Buck",
+      "sku_id": "SKU000472",
+      "product_name": "Energy Cleaning Basic",
+      "demand": 41,
+      "available_stock": 50,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 1,
+      "order_quantity": 5,
+      "pack_size": 1,
+      "unit_price": 19.84,
+      "total_price": 99.2,
+      "lead_time_days": 4,
+      "calculated_at": "2026-01-08T15:07:42.653788",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 41,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 41 + 10 - 50) = 1"
+      }
+    }
+  ]
+}

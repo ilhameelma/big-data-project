@@ -1,0 +1,62 @@
+{
+  "supplier_id": "SUP009",
+  "supplier_name": "Williams, Sullivan and Mckinney",
+  "order_date": "2025-12-04",
+  "total_items": 2,
+  "total_value": 354.12,
+  "generated_at": "2026-01-08T15:07:42.673072",
+  "items": [
+    {
+      "order_id": "374ed9b3-75aa-451f-ba92-61fef17638ac",
+      "order_date": "2025-12-04",
+      "supplier_id": "SUP009",
+      "supplier_name": "Williams, Sullivan and Mckinney",
+      "sku_id": "SKU000049",
+      "product_name": "Manage Cleaning Organic",
+      "demand": 41,
+      "available_stock": 50,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 1,
+      "order_quantity": 12,
+      "pack_size": 12,
+      "unit_price": 17.99,
+      "total_price": 215.88,
+      "lead_time_days": 1,
+      "calculated_at": "2026-01-08T15:07:42.560313",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 41,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 41 + 10 - 50) = 1"
+      }
+    },
+    {
+      "order_id": "43b9ac78-bbbd-4ef4-94d2-c056c383c159",
+      "order_date": "2025-12-04",
+      "supplier_id": "SUP009",
+      "supplier_name": "Williams, Sullivan and Mckinney",
+      "sku_id": "SKU000354",
+      "product_name": "Beyond Dairy Pro",
+      "demand": 50,
+      "available_stock": 50,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 10,
+      "order_quantity": 48,
+      "pack_size": 6,
+      "unit_price": 2.88,
+      "total_price": 138.24,
+      "lead_time_days": 3,
+      "calculated_at": "2026-01-08T15:07:42.627027",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 50,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 50 + 10 - 50) = 10"
+      }
+    }
+  ]
+}

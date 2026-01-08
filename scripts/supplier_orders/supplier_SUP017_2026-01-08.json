@@ -1,0 +1,88 @@
+{
+  "supplier_id": "SUP017",
+  "supplier_name": "Tate, Rodriguez and Buck",
+  "order_date": "2026-01-08",
+  "total_items": 3,
+  "total_value": 465.72,
+  "generated_at": "2026-01-08T14:59:44.023617",
+  "items": [
+    {
+      "order_id": "7a67d7c6-5c45-4bab-8136-a661349706d3",
+      "order_date": "2026-01-08",
+      "supplier_id": "SUP017",
+      "supplier_name": "Tate, Rodriguez and Buck",
+      "sku_id": "SKU000115",
+      "product_name": "Section Dairy Pro",
+      "demand": 44,
+      "available_stock": 50,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 4,
+      "order_quantity": 12,
+      "pack_size": 12,
+      "unit_price": 13.16,
+      "total_price": 157.92000000000002,
+      "lead_time_days": 1,
+      "calculated_at": "2026-01-08T14:59:43.870072",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 44,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 44 + 10 - 50) = 4"
+      }
+    },
+    {
+      "order_id": "f0c4653c-2385-4665-8a59-ff9d2a8ef6da",
+      "order_date": "2026-01-08",
+      "supplier_id": "SUP017",
+      "supplier_name": "Tate, Rodriguez and Buck",
+      "sku_id": "SKU000391",
+      "product_name": "Commercial Personal Care Organic",
+      "demand": 42,
+      "available_stock": 50,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 2,
+      "order_quantity": 12,
+      "pack_size": 12,
+      "unit_price": 8.76,
+      "total_price": 105.12,
+      "lead_time_days": 5,
+      "calculated_at": "2026-01-08T14:59:43.946984",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 42,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 42 + 10 - 50) = 2"
+      }
+    },
+    {
+      "order_id": "7a246db2-079d-4294-b8cf-92b4347b20f2",
+      "order_date": "2026-01-08",
+      "supplier_id": "SUP017",
+      "supplier_name": "Tate, Rodriguez and Buck",
+      "sku_id": "SKU000468",
+      "product_name": "Report Grocery Basic",
+      "demand": 43,
+      "available_stock": 50,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 3,
+      "order_quantity": 12,
+      "pack_size": 12,
+      "unit_price": 16.89,
+      "total_price": 202.68,
+      "lead_time_days": 6,
+      "calculated_at": "2026-01-08T14:59:43.965476",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 43,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 43 + 10 - 50) = 3"
+      }
+    }
+  ]
+}

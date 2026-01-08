@@ -1,0 +1,62 @@
+{
+  "supplier_id": "SUP002",
+  "supplier_name": "Kennedy-Liu",
+  "order_date": "2025-12-04",
+  "total_items": 2,
+  "total_value": 243.12,
+  "generated_at": "2026-01-08T15:07:42.690562",
+  "items": [
+    {
+      "order_id": "d6df7322-94dd-47bc-ad9d-92219bcf77f0",
+      "order_date": "2025-12-04",
+      "supplier_id": "SUP002",
+      "supplier_name": "Kennedy-Liu",
+      "sku_id": "SKU000148",
+      "product_name": "Account Bakery Basic",
+      "demand": 45,
+      "available_stock": 50,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 5,
+      "order_quantity": 12,
+      "pack_size": 12,
+      "unit_price": 7.24,
+      "total_price": 86.88,
+      "lead_time_days": 6,
+      "calculated_at": "2026-01-08T15:07:42.582252",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 45,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 45 + 10 - 50) = 5"
+      }
+    },
+    {
+      "order_id": "8137ae50-9c87-4816-abd9-98d00328e5d9",
+      "order_date": "2025-12-04",
+      "supplier_id": "SUP002",
+      "supplier_name": "Kennedy-Liu",
+      "sku_id": "SKU000394",
+      "product_name": "Fire Dairy Organic",
+      "demand": 46,
+      "available_stock": 50,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 6,
+      "order_quantity": 12,
+      "pack_size": 12,
+      "unit_price": 13.02,
+      "total_price": 156.24,
+      "lead_time_days": 4,
+      "calculated_at": "2026-01-08T15:07:42.636185",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 46,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 46 + 10 - 50) = 6"
+      }
+    }
+  ]
+}

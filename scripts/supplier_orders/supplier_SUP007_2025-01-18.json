@@ -1,0 +1,62 @@
+{
+  "supplier_id": "SUP007",
+  "supplier_name": "Hernandez, Gonzalez and Curry",
+  "order_date": "2025-01-18",
+  "total_items": 2,
+  "total_value": 426.28,
+  "generated_at": "2026-01-08T15:53:23.871793",
+  "items": [
+    {
+      "order_id": "738414b1-b262-4ef1-a68b-3c883141e8b2",
+      "order_date": "2025-01-18",
+      "supplier_id": "SUP007",
+      "supplier_name": "Hernandez, Gonzalez and Curry",
+      "sku_id": "SKU000131",
+      "product_name": "Pay Personal Care Pro",
+      "demand": 48,
+      "available_stock": 50,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 8,
+      "order_quantity": 12,
+      "pack_size": 6,
+      "unit_price": 9.64,
+      "total_price": 115.68,
+      "lead_time_days": 5,
+      "calculated_at": "2026-01-08T15:53:23.701028",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 48,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 48 + 10 - 50) = 8"
+      }
+    },
+    {
+      "order_id": "dbaed085-9f14-4e1a-b114-e56fb0bbdd96",
+      "order_date": "2025-01-18",
+      "supplier_id": "SUP007",
+      "supplier_name": "Hernandez, Gonzalez and Curry",
+      "sku_id": "SKU000245",
+      "product_name": "Figure Beverages Basic",
+      "demand": 60,
+      "available_stock": 50,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 20,
+      "order_quantity": 20,
+      "pack_size": 1,
+      "unit_price": 15.53,
+      "total_price": 310.59999999999997,
+      "lead_time_days": 2,
+      "calculated_at": "2026-01-08T15:53:23.738381",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 60,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 60 + 10 - 50) = 20"
+      }
+    }
+  ]
+}

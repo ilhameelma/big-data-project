@@ -1,0 +1,88 @@
+{
+  "supplier_id": "SUP012",
+  "supplier_name": "Leonard, Ward and Huff",
+  "order_date": "2026-01-08",
+  "total_items": 3,
+  "total_value": 773.88,
+  "generated_at": "2026-01-08T14:59:44.041579",
+  "items": [
+    {
+      "order_id": "1973a1bc-f560-4fc6-93cf-61dae5123661",
+      "order_date": "2026-01-08",
+      "supplier_id": "SUP012",
+      "supplier_name": "Leonard, Ward and Huff",
+      "sku_id": "SKU000186",
+      "product_name": "Role Bakery Pro",
+      "demand": 41,
+      "available_stock": 50,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 1,
+      "order_quantity": 10,
+      "pack_size": 6,
+      "unit_price": 18.04,
+      "total_price": 180.39999999999998,
+      "lead_time_days": 5,
+      "calculated_at": "2026-01-08T14:59:43.885698",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 41,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 41 + 10 - 50) = 1"
+      }
+    },
+    {
+      "order_id": "84962de2-c8c4-4ae4-889f-29b188153f1b",
+      "order_date": "2026-01-08",
+      "supplier_id": "SUP012",
+      "supplier_name": "Leonard, Ward and Huff",
+      "sku_id": "SKU000420",
+      "product_name": "Reduce Beverages Gold",
+      "demand": 41,
+      "available_stock": 50,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 1,
+      "order_quantity": 24,
+      "pack_size": 12,
+      "unit_price": 19.52,
+      "total_price": 468.48,
+      "lead_time_days": 1,
+      "calculated_at": "2026-01-08T14:59:43.953224",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 41,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 41 + 10 - 50) = 1"
+      }
+    },
+    {
+      "order_id": "33edaaf4-c15e-439f-a7d7-00ff257a8f87",
+      "order_date": "2026-01-08",
+      "supplier_id": "SUP012",
+      "supplier_name": "Leonard, Ward and Huff",
+      "sku_id": "SKU000432",
+      "product_name": "Partner Personal Care Organic",
+      "demand": 43,
+      "available_stock": 50,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 3,
+      "order_quantity": 10,
+      "pack_size": 6,
+      "unit_price": 12.5,
+      "total_price": 125.0,
+      "lead_time_days": 6,
+      "calculated_at": "2026-01-08T14:59:43.956973",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 43,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 43 + 10 - 50) = 3"
+      }
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "supplier_id": "SUP006",
+  "supplier_name": "Mack-Bowman",
+  "order_date": "2025-12-04",
+  "total_items": 3,
+  "total_value": 876.24,
+  "generated_at": "2026-01-08T15:07:42.677323",
+  "items": [
+    {
+      "order_id": "f7fa4ceb-dc93-4c7a-a222-25ba841a94be",
+      "order_date": "2025-12-04",
+      "supplier_id": "SUP006",
+      "supplier_name": "Mack-Bowman",
+      "sku_id": "SKU000095",
+      "product_name": "Dark Dairy Pro",
+      "demand": 42,
+      "available_stock": 50,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 2,
+      "order_quantity": 24,
+      "pack_size": 12,
+      "unit_price": 14.09,
+      "total_price": 338.15999999999997,
+      "lead_time_days": 6,
+      "calculated_at": "2026-01-08T15:07:42.570553",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 42,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 42 + 10 - 50) = 2"
+      }
+    },
+    {
+      "order_id": "f70f2626-c738-4a6e-bd07-cca1bbc95143",
+      "order_date": "2025-12-04",
+      "supplier_id": "SUP006",
+      "supplier_name": "Mack-Bowman",
+      "sku_id": "SKU000211",
+      "product_name": "Term Dairy Organic",
+      "demand": 42,
+      "available_stock": 50,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 2,
+      "order_quantity": 48,
+      "pack_size": 1,
+      "unit_price": 8.59,
+      "total_price": 412.32,
+      "lead_time_days": 5,
+      "calculated_at": "2026-01-08T15:07:42.593728",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 42,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 42 + 10 - 50) = 2"
+      }
+    },
+    {
+      "order_id": "428bdacb-3be5-47bc-b653-3ffa0b6dd779",
+      "order_date": "2025-12-04",
+      "supplier_id": "SUP006",
+      "supplier_name": "Mack-Bowman",
+      "sku_id": "SKU000222",
+      "product_name": "Add Dairy Basic",
+      "demand": 42,
+      "available_stock": 50,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 2,
+      "order_quantity": 24,
+      "pack_size": 12,
+      "unit_price": 5.24,
+      "total_price": 125.76,
+      "lead_time_days": 2,
+      "calculated_at": "2026-01-08T15:07:42.597443",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 42,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 42 + 10 - 50) = 2"
+      }
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "supplier_id": "SUP007",
+  "supplier_name": "Hernandez, Gonzalez and Curry",
+  "order_date": "2025-12-04",
+  "total_items": 1,
+  "total_value": 34.7,
+  "generated_at": "2026-01-08T15:07:42.700253",
+  "items": [
+    {
+      "order_id": "cf68f8d0-ff1d-4a87-b71b-8572e8a8c2f9",
+      "order_date": "2025-12-04",
+      "supplier_id": "SUP007",
+      "supplier_name": "Hernandez, Gonzalez and Curry",
+      "sku_id": "SKU000200",
+      "product_name": "Off Cleaning Organic",
+      "demand": 42,
+      "available_stock": 50,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 2,
+      "order_quantity": 10,
+      "pack_size": 6,
+      "unit_price": 3.47,
+      "total_price": 34.7,
+      "lead_time_days": 1,
+      "calculated_at": "2026-01-08T15:07:42.591497",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 42,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 42 + 10 - 50) = 2"
+      }
+    }
+  ]
+}

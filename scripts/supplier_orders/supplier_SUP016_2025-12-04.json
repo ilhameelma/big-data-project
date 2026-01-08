@@ -1,0 +1,62 @@
+{
+  "supplier_id": "SUP016",
+  "supplier_name": "Price Ltd",
+  "order_date": "2025-12-04",
+  "total_items": 2,
+  "total_value": 469.44000000000005,
+  "generated_at": "2026-01-08T15:07:42.694716",
+  "items": [
+    {
+      "order_id": "a4c7d52b-c1d0-484b-bdc8-3531c7d23a1f",
+      "order_date": "2025-12-04",
+      "supplier_id": "SUP016",
+      "supplier_name": "Price Ltd",
+      "sku_id": "SKU000194",
+      "product_name": "Late Bakery Basic",
+      "demand": 46,
+      "available_stock": 50,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 6,
+      "order_quantity": 12,
+      "pack_size": 12,
+      "unit_price": 14.58,
+      "total_price": 174.96,
+      "lead_time_days": 3,
+      "calculated_at": "2026-01-08T15:07:42.590400",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 46,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 46 + 10 - 50) = 6"
+      }
+    },
+    {
+      "order_id": "8b6a97e3-3b3e-4d8f-a796-2ad2f1eb593b",
+      "order_date": "2025-12-04",
+      "supplier_id": "SUP016",
+      "supplier_name": "Price Ltd",
+      "sku_id": "SKU000483",
+      "product_name": "Name Grocery Organic",
+      "demand": 42,
+      "available_stock": 50,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 2,
+      "order_quantity": 24,
+      "pack_size": 12,
+      "unit_price": 12.27,
+      "total_price": 294.48,
+      "lead_time_days": 6,
+      "calculated_at": "2026-01-08T15:07:42.655983",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 42,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 42 + 10 - 50) = 2"
+      }
+    }
+  ]
+}

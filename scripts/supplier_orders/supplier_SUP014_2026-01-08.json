@@ -1,0 +1,88 @@
+{
+  "supplier_id": "SUP014",
+  "supplier_name": "Mitchell-Durham",
+  "order_date": "2026-01-08",
+  "total_items": 3,
+  "total_value": 529.1700000000001,
+  "generated_at": "2026-01-08T14:59:43.997703",
+  "items": [
+    {
+      "order_id": "adc8194c-03cc-46b4-a965-9d1a3e68f131",
+      "order_date": "2026-01-08",
+      "supplier_id": "SUP014",
+      "supplier_name": "Mitchell-Durham",
+      "sku_id": "SKU000048",
+      "product_name": "Focus Frozen Basic",
+      "demand": 44,
+      "available_stock": 50,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 4,
+      "order_quantity": 6,
+      "pack_size": 6,
+      "unit_price": 12.85,
+      "total_price": 77.1,
+      "lead_time_days": 4,
+      "calculated_at": "2026-01-08T14:59:43.855870",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 44,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 44 + 10 - 50) = 4"
+      }
+    },
+    {
+      "order_id": "1ee9d168-a034-49da-a274-2b09a7d19798",
+      "order_date": "2026-01-08",
+      "supplier_id": "SUP014",
+      "supplier_name": "Mitchell-Durham",
+      "sku_id": "SKU000216",
+      "product_name": "Fine Beverages Gold",
+      "demand": 43,
+      "available_stock": 50,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 3,
+      "order_quantity": 3,
+      "pack_size": 1,
+      "unit_price": 11.41,
+      "total_price": 34.230000000000004,
+      "lead_time_days": 2,
+      "calculated_at": "2026-01-08T14:59:43.895487",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 43,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 43 + 10 - 50) = 3"
+      }
+    },
+    {
+      "order_id": "2815838d-825d-4ce0-958f-d27552d29337",
+      "order_date": "2026-01-08",
+      "supplier_id": "SUP014",
+      "supplier_name": "Mitchell-Durham",
+      "sku_id": "SKU000287",
+      "product_name": "Certain Personal Care Basic",
+      "demand": 52,
+      "available_stock": 50,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 12,
+      "order_quantity": 24,
+      "pack_size": 12,
+      "unit_price": 17.41,
+      "total_price": 417.84000000000003,
+      "lead_time_days": 2,
+      "calculated_at": "2026-01-08T14:59:43.912784",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 52,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 52 + 10 - 50) = 12"
+      }
+    }
+  ]
+}

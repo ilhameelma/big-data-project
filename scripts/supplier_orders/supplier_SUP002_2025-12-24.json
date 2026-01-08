@@ -1,0 +1,36 @@
+{
+  "supplier_id": "SUP002",
+  "supplier_name": "Kennedy-Liu",
+  "order_date": "2025-12-24",
+  "total_items": 1,
+  "total_value": 97.65,
+  "generated_at": "2026-01-08T12:00:03.848297",
+  "items": [
+    {
+      "order_id": "be091b87-b578-4fd7-be21-ba353c089cd1",
+      "order_date": "2025-12-24",
+      "supplier_id": "SUP002",
+      "supplier_name": "Kennedy-Liu",
+      "sku_id": "SKU000140",
+      "product_name": "Daughter Cleaning Pro",
+      "demand": 14,
+      "available_stock": 3,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 21,
+      "order_quantity": 21,
+      "pack_size": 1,
+      "unit_price": 4.65,
+      "total_price": 97.65,
+      "lead_time_days": 4,
+      "calculated_at": "2026-01-08T12:00:03.767140",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 14,
+        "safety_stock": 10,
+        "available_stock": 3,
+        "calculation": "max(0, 14 + 10 - 3) = 21"
+      }
+    }
+  ]
+}

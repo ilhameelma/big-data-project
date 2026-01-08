@@ -1,0 +1,88 @@
+{
+  "supplier_id": "SUP015",
+  "supplier_name": "English-Hanna",
+  "order_date": "2025-01-18",
+  "total_items": 3,
+  "total_value": 785.4,
+  "generated_at": "2026-01-08T15:53:23.823132",
+  "items": [
+    {
+      "order_id": "3d62f9af-93b9-4dad-ad96-4702521de19f",
+      "order_date": "2025-01-18",
+      "supplier_id": "SUP015",
+      "supplier_name": "English-Hanna",
+      "sku_id": "SKU000000",
+      "product_name": "Politics Beverages Organic",
+      "demand": 57,
+      "available_stock": 50,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 17,
+      "order_quantity": 24,
+      "pack_size": 12,
+      "unit_price": 19.04,
+      "total_price": 456.96,
+      "lead_time_days": 1,
+      "calculated_at": "2026-01-08T15:53:23.659740",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 57,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 57 + 10 - 50) = 17"
+      }
+    },
+    {
+      "order_id": "c105b9dc-4b0d-472b-89b1-6f14ed2b5a2a",
+      "order_date": "2025-01-18",
+      "supplier_id": "SUP015",
+      "supplier_name": "English-Hanna",
+      "sku_id": "SKU000189",
+      "product_name": "Approach Grocery Pro",
+      "demand": 51,
+      "available_stock": 50,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 11,
+      "order_quantity": 12,
+      "pack_size": 12,
+      "unit_price": 10.9,
+      "total_price": 130.8,
+      "lead_time_days": 5,
+      "calculated_at": "2026-01-08T15:53:23.721695",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 51,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 51 + 10 - 50) = 11"
+      }
+    },
+    {
+      "order_id": "3a84ef03-f103-4aba-9306-c177e1d0c180",
+      "order_date": "2025-01-18",
+      "supplier_id": "SUP015",
+      "supplier_name": "English-Hanna",
+      "sku_id": "SKU000247",
+      "product_name": "Thought Bakery Basic",
+      "demand": 45,
+      "available_stock": 50,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 5,
+      "order_quantity": 12,
+      "pack_size": 12,
+      "unit_price": 16.47,
+      "total_price": 197.64,
+      "lead_time_days": 4,
+      "calculated_at": "2026-01-08T15:53:23.739042",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 45,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 45 + 10 - 50) = 5"
+      }
+    }
+  ]
+}

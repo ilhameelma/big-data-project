@@ -1,0 +1,88 @@
+{
+  "supplier_id": "SUP001",
+  "supplier_name": "King-Flores",
+  "order_date": "2026-01-08",
+  "total_items": 3,
+  "total_value": 233.12,
+  "generated_at": "2026-01-08T14:59:43.983663",
+  "items": [
+    {
+      "order_id": "46d323ed-2de9-4b86-8d7f-8dc924aabf30",
+      "order_date": "2026-01-08",
+      "supplier_id": "SUP001",
+      "supplier_name": "King-Flores",
+      "sku_id": "SKU000026",
+      "product_name": "Point Frozen Gold",
+      "demand": 41,
+      "available_stock": 50,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 1,
+      "order_quantity": 10,
+      "pack_size": 6,
+      "unit_price": 5.36,
+      "total_price": 53.6,
+      "lead_time_days": 5,
+      "calculated_at": "2026-01-08T14:59:43.851064",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 41,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 41 + 10 - 50) = 1"
+      }
+    },
+    {
+      "order_id": "95469ff5-148f-4bcf-8e5b-fa5a4df6065f",
+      "order_date": "2026-01-08",
+      "supplier_id": "SUP001",
+      "supplier_name": "King-Flores",
+      "sku_id": "SKU000250",
+      "product_name": "Card Bakery Pro",
+      "demand": 50,
+      "available_stock": 50,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 10,
+      "order_quantity": 12,
+      "pack_size": 12,
+      "unit_price": 11.07,
+      "total_price": 132.84,
+      "lead_time_days": 2,
+      "calculated_at": "2026-01-08T14:59:43.901972",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 50,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 50 + 10 - 50) = 10"
+      }
+    },
+    {
+      "order_id": "7ba5171c-ab6b-4a53-9e1a-985741e00f33",
+      "order_date": "2026-01-08",
+      "supplier_id": "SUP001",
+      "supplier_name": "King-Flores",
+      "sku_id": "SKU000276",
+      "product_name": "House Snacks Gold",
+      "demand": 49,
+      "available_stock": 50,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 9,
+      "order_quantity": 12,
+      "pack_size": 6,
+      "unit_price": 3.89,
+      "total_price": 46.68,
+      "lead_time_days": 4,
+      "calculated_at": "2026-01-08T14:59:43.909753",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 49,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 49 + 10 - 50) = 9"
+      }
+    }
+  ]
+}

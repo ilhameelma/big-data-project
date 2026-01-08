@@ -1,0 +1,88 @@
+{
+  "supplier_id": "SUP000",
+  "supplier_name": "Nichols-Horton",
+  "order_date": "2025-12-04",
+  "total_items": 3,
+  "total_value": 352.08000000000004,
+  "generated_at": "2026-01-08T15:07:42.716188",
+  "items": [
+    {
+      "order_id": "0077ad19-f049-4498-86f7-ac0822986d56",
+      "order_date": "2025-12-04",
+      "supplier_id": "SUP000",
+      "supplier_name": "Nichols-Horton",
+      "sku_id": "SKU000360",
+      "product_name": "Risk Snacks Organic",
+      "demand": 42,
+      "available_stock": 50,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 2,
+      "order_quantity": 12,
+      "pack_size": 12,
+      "unit_price": 2.33,
+      "total_price": 27.96,
+      "lead_time_days": 2,
+      "calculated_at": "2026-01-08T15:07:42.629145",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 42,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 42 + 10 - 50) = 2"
+      }
+    },
+    {
+      "order_id": "62c717cb-12fa-4025-a543-54491d9f212d",
+      "order_date": "2025-12-04",
+      "supplier_id": "SUP000",
+      "supplier_name": "Nichols-Horton",
+      "sku_id": "SKU000464",
+      "product_name": "Simple Cleaning Basic",
+      "demand": 46,
+      "available_stock": 50,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 6,
+      "order_quantity": 12,
+      "pack_size": 12,
+      "unit_price": 9.48,
+      "total_price": 113.76,
+      "lead_time_days": 1,
+      "calculated_at": "2026-01-08T15:07:42.652322",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 46,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 46 + 10 - 50) = 6"
+      }
+    },
+    {
+      "order_id": "ba3702ec-c2e2-42bc-b538-29a0d28c74b2",
+      "order_date": "2025-12-04",
+      "supplier_id": "SUP000",
+      "supplier_name": "Nichols-Horton",
+      "sku_id": "SKU000470",
+      "product_name": "Name Grocery Gold",
+      "demand": 45,
+      "available_stock": 50,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 5,
+      "order_quantity": 12,
+      "pack_size": 12,
+      "unit_price": 17.53,
+      "total_price": 210.36,
+      "lead_time_days": 2,
+      "calculated_at": "2026-01-08T15:07:42.653383",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 45,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 45 + 10 - 50) = 5"
+      }
+    }
+  ]
+}

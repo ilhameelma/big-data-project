@@ -1,0 +1,36 @@
+{
+  "supplier_id": "SUP018",
+  "supplier_name": "Smith, Newman and Fowler",
+  "order_date": "2025-12-24",
+  "total_items": 1,
+  "total_value": 558.24,
+  "generated_at": "2026-01-08T12:00:03.856721",
+  "items": [
+    {
+      "order_id": "ea706780-5794-4be7-b121-65c41ea1f204",
+      "order_date": "2025-12-24",
+      "supplier_id": "SUP018",
+      "supplier_name": "Smith, Newman and Fowler",
+      "sku_id": "SKU000363",
+      "product_name": "Full Personal Care Basic",
+      "demand": 17,
+      "available_stock": 10,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 17,
+      "order_quantity": 48,
+      "pack_size": 1,
+      "unit_price": 11.63,
+      "total_price": 558.24,
+      "lead_time_days": 1,
+      "calculated_at": "2026-01-08T12:00:03.809859",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 17,
+        "safety_stock": 10,
+        "available_stock": 10,
+        "calculation": "max(0, 17 + 10 - 10) = 17"
+      }
+    }
+  ]
+}

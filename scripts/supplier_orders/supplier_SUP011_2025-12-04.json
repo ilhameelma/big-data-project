@@ -1,0 +1,88 @@
+{
+  "supplier_id": "SUP011",
+  "supplier_name": "Brooks Ltd",
+  "order_date": "2025-12-04",
+  "total_items": 3,
+  "total_value": 496.98,
+  "generated_at": "2026-01-08T15:07:42.711077",
+  "items": [
+    {
+      "order_id": "39bf136f-ab8e-4c24-bb51-de2c6dd51627",
+      "order_date": "2025-12-04",
+      "supplier_id": "SUP011",
+      "supplier_name": "Brooks Ltd",
+      "sku_id": "SKU000300",
+      "product_name": "Dream Cleaning Gold",
+      "demand": 42,
+      "available_stock": 50,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 2,
+      "order_quantity": 5,
+      "pack_size": 1,
+      "unit_price": 0.98,
+      "total_price": 4.9,
+      "lead_time_days": 5,
+      "calculated_at": "2026-01-08T15:07:42.616732",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 42,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 42 + 10 - 50) = 2"
+      }
+    },
+    {
+      "order_id": "ccaf86e9-8e6b-46cc-89b0-bda2feb79db0",
+      "order_date": "2025-12-04",
+      "supplier_id": "SUP011",
+      "supplier_name": "Brooks Ltd",
+      "sku_id": "SKU000333",
+      "product_name": "Never Bakery Gold",
+      "demand": 43,
+      "available_stock": 50,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 3,
+      "order_quantity": 24,
+      "pack_size": 24,
+      "unit_price": 19.93,
+      "total_price": 478.32,
+      "lead_time_days": 6,
+      "calculated_at": "2026-01-08T15:07:42.623019",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 43,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 43 + 10 - 50) = 3"
+      }
+    },
+    {
+      "order_id": "4dc110f4-7d2d-4e83-9f77-c8f5b93898bd",
+      "order_date": "2025-12-04",
+      "supplier_id": "SUP011",
+      "supplier_name": "Brooks Ltd",
+      "sku_id": "SKU000448",
+      "product_name": "Together Grocery Organic",
+      "demand": 41,
+      "available_stock": 50,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 1,
+      "order_quantity": 1,
+      "pack_size": 1,
+      "unit_price": 13.76,
+      "total_price": 13.76,
+      "lead_time_days": 2,
+      "calculated_at": "2026-01-08T15:07:42.649545",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 41,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 41 + 10 - 50) = 1"
+      }
+    }
+  ]
+}

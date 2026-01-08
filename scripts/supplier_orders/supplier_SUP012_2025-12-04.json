@@ -1,0 +1,36 @@
+{
+  "supplier_id": "SUP012",
+  "supplier_name": "Leonard, Ward and Huff",
+  "order_date": "2025-12-04",
+  "total_items": 1,
+  "total_value": 931.1999999999999,
+  "generated_at": "2026-01-08T15:07:42.706942",
+  "items": [
+    {
+      "order_id": "b52a30a9-3803-4457-98d1-a64bbe2f8a01",
+      "order_date": "2025-12-04",
+      "supplier_id": "SUP012",
+      "supplier_name": "Leonard, Ward and Huff",
+      "sku_id": "SKU000275",
+      "product_name": "Attack Dairy Basic",
+      "demand": 45,
+      "available_stock": 50,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 5,
+      "order_quantity": 48,
+      "pack_size": 12,
+      "unit_price": 19.4,
+      "total_price": 931.1999999999999,
+      "lead_time_days": 6,
+      "calculated_at": "2026-01-08T15:07:42.609554",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 45,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 45 + 10 - 50) = 5"
+      }
+    }
+  ]
+}

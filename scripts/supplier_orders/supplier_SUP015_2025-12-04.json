@@ -1,0 +1,62 @@
+{
+  "supplier_id": "SUP015",
+  "supplier_name": "English-Hanna",
+  "order_date": "2025-12-04",
+  "total_items": 2,
+  "total_value": 141.36,
+  "generated_at": "2026-01-08T15:07:42.683051",
+  "items": [
+    {
+      "order_id": "79be08b2-292b-448e-b094-cc225217755d",
+      "order_date": "2025-12-04",
+      "supplier_id": "SUP015",
+      "supplier_name": "English-Hanna",
+      "sku_id": "SKU000102",
+      "product_name": "Person Frozen Gold",
+      "demand": 54,
+      "available_stock": 50,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 14,
+      "order_quantity": 48,
+      "pack_size": 6,
+      "unit_price": 2.28,
+      "total_price": 109.44,
+      "lead_time_days": 2,
+      "calculated_at": "2026-01-08T15:07:42.571594",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 54,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 54 + 10 - 50) = 14"
+      }
+    },
+    {
+      "order_id": "6631cd18-746e-4fbb-a658-d17e74f08b88",
+      "order_date": "2025-12-04",
+      "supplier_id": "SUP015",
+      "supplier_name": "English-Hanna",
+      "sku_id": "SKU000134",
+      "product_name": "High Personal Care Basic",
+      "demand": 43,
+      "available_stock": 50,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 3,
+      "order_quantity": 6,
+      "pack_size": 6,
+      "unit_price": 5.32,
+      "total_price": 31.92,
+      "lead_time_days": 4,
+      "calculated_at": "2026-01-08T15:07:42.577483",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 43,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 43 + 10 - 50) = 3"
+      }
+    }
+  ]
+}

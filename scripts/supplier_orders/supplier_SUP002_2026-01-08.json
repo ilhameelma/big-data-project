@@ -1,0 +1,88 @@
+{
+  "supplier_id": "SUP002",
+  "supplier_name": "Kennedy-Liu",
+  "order_date": "2026-01-08",
+  "total_items": 3,
+  "total_value": 430.44,
+  "generated_at": "2026-01-08T14:59:44.032817",
+  "items": [
+    {
+      "order_id": "e6866ca8-6133-42ee-9ee0-dd03b80d1402",
+      "order_date": "2026-01-08",
+      "supplier_id": "SUP002",
+      "supplier_name": "Kennedy-Liu",
+      "sku_id": "SKU000148",
+      "product_name": "Account Bakery Basic",
+      "demand": 48,
+      "available_stock": 50,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 8,
+      "order_quantity": 12,
+      "pack_size": 12,
+      "unit_price": 7.24,
+      "total_price": 86.88,
+      "lead_time_days": 6,
+      "calculated_at": "2026-01-08T14:59:43.878258",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 48,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 48 + 10 - 50) = 8"
+      }
+    },
+    {
+      "order_id": "b65cfef7-b891-4e35-b43a-273852bc9477",
+      "order_date": "2026-01-08",
+      "supplier_id": "SUP002",
+      "supplier_name": "Kennedy-Liu",
+      "sku_id": "SKU000394",
+      "product_name": "Fire Dairy Organic",
+      "demand": 51,
+      "available_stock": 50,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 11,
+      "order_quantity": 12,
+      "pack_size": 12,
+      "unit_price": 13.02,
+      "total_price": 156.24,
+      "lead_time_days": 4,
+      "calculated_at": "2026-01-08T14:59:43.947562",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 51,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 51 + 10 - 50) = 11"
+      }
+    },
+    {
+      "order_id": "f6392c07-35e3-41ff-805d-590539d39c11",
+      "order_date": "2026-01-08",
+      "supplier_id": "SUP002",
+      "supplier_name": "Kennedy-Liu",
+      "sku_id": "SKU000451",
+      "product_name": "Plan Beverages Pro",
+      "demand": 45,
+      "available_stock": 50,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 5,
+      "order_quantity": 12,
+      "pack_size": 12,
+      "unit_price": 15.61,
+      "total_price": 187.32,
+      "lead_time_days": 3,
+      "calculated_at": "2026-01-08T14:59:43.962178",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 45,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 45 + 10 - 50) = 5"
+      }
+    }
+  ]
+}

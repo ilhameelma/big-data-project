@@ -1,0 +1,36 @@
+{
+  "supplier_id": "SUP007",
+  "supplier_name": "Hernandez, Gonzalez and Curry",
+  "order_date": "2025-12-24",
+  "total_items": 1,
+  "total_value": 515.04,
+  "generated_at": "2026-01-08T12:00:03.852071",
+  "items": [
+    {
+      "order_id": "e1b1e056-e52a-4e0c-b86b-0adeb43e3188",
+      "order_date": "2025-12-24",
+      "supplier_id": "SUP007",
+      "supplier_name": "Hernandez, Gonzalez and Curry",
+      "sku_id": "SKU000168",
+      "product_name": "Bill Dairy Basic",
+      "demand": 10,
+      "available_stock": 5,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 15,
+      "order_quantity": 48,
+      "pack_size": 6,
+      "unit_price": 10.73,
+      "total_price": 515.04,
+      "lead_time_days": 2,
+      "calculated_at": "2026-01-08T12:00:03.772349",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 10,
+        "safety_stock": 10,
+        "available_stock": 5,
+        "calculation": "max(0, 10 + 10 - 5) = 15"
+      }
+    }
+  ]
+}
