@@ -2,31 +2,12 @@
   "supplier_id": "SUP007",
   "supplier_name": "Hernandez, Gonzalez and Curry",
   "order_date": "2025-12-02",
-  "total_items": 4,
-  "total_value": 785.9200000000001,
-  "generated_at": "2026-01-04T10:27:12.219094",
+  "total_items": 3,
+  "total_value": 674.5,
+  "generated_at": "2026-01-10T20:43:30.694641",
   "items": [
     {
-      "order_id": "f17bc328-7f60-4b07-ac72-1af6e3352acd",
-      "order_date": "2025-12-02",
-      "supplier_id": "SUP007",
-      "supplier_name": "Hernandez, Gonzalez and Curry",
-      "sku_id": "SKU000144",
-      "product_name": "Least Dairy Gold",
-      "demand": 34,
-      "available_stock": 43,
-      "reserved_stock": 0,
-      "safety_stock": 10,
-      "net_demand": 1,
-      "order_quantity": 6,
-      "pack_size": 6,
-      "unit_price": 18.57,
-      "total_price": 111.42,
-      "lead_time_days": 5,
-      "calculated_at": "2026-01-04T10:27:12.199905"
-    },
-    {
-      "order_id": "ba493940-75c8-42e7-a3af-7cdbaf2302fd",
+      "order_id": "dd6da8f9-96c6-46b1-aa3d-4aa5c87e711d",
       "order_date": "2025-12-02",
       "supplier_id": "SUP007",
       "supplier_name": "Hernandez, Gonzalez and Curry",
@@ -42,10 +23,17 @@
       "unit_price": 18.01,
       "total_price": 270.15000000000003,
       "lead_time_days": 5,
-      "calculated_at": "2026-01-04T10:27:12.200101"
+      "calculated_at": "2026-01-10T20:43:30.466765",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 55,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 55 + 10 - 50) = 15"
+      }
     },
     {
-      "order_id": "6428d6bd-9786-4c03-a262-39d4a1d79657",
+      "order_id": "319157bf-7249-4584-afd6-c12d315dcafe",
       "order_date": "2025-12-02",
       "supplier_id": "SUP007",
       "supplier_name": "Hernandez, Gonzalez and Curry",
@@ -61,10 +49,17 @@
       "unit_price": 15.53,
       "total_price": 170.82999999999998,
       "lead_time_days": 2,
-      "calculated_at": "2026-01-04T10:27:12.200201"
+      "calculated_at": "2026-01-10T20:43:30.482770",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 51,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 51 + 10 - 50) = 11"
+      }
     },
     {
-      "order_id": "9e909b2f-473d-469b-af30-97d77d52d020",
+      "order_id": "a668ce2a-367e-481b-a1c9-8cd7856a43e8",
       "order_date": "2025-12-02",
       "supplier_id": "SUP007",
       "supplier_name": "Hernandez, Gonzalez and Curry",
@@ -80,7 +75,14 @@
       "unit_price": 9.73,
       "total_price": 233.52,
       "lead_time_days": 5,
-      "calculated_at": "2026-01-04T10:27:12.200401"
+      "calculated_at": "2026-01-10T20:43:30.507296",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 42,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 42 + 10 - 50) = 2"
+      }
     }
   ]
 }

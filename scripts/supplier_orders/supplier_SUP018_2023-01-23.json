@@ -1,0 +1,62 @@
+{
+  "supplier_id": "SUP018",
+  "supplier_name": "Smith, Newman and Fowler",
+  "order_date": "2023-01-23",
+  "total_items": 2,
+  "total_value": 464.28,
+  "generated_at": "2026-01-10T22:04:25.239414",
+  "items": [
+    {
+      "order_id": "62f96a5c-46aa-480e-9b63-697d350efcf8",
+      "order_date": "2023-01-23",
+      "supplier_id": "SUP018",
+      "supplier_name": "Smith, Newman and Fowler",
+      "sku_id": "SKU000165",
+      "product_name": "Chair Beverages Pro",
+      "demand": 42,
+      "available_stock": 50,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 2,
+      "order_quantity": 12,
+      "pack_size": 12,
+      "unit_price": 19.74,
+      "total_price": 236.88,
+      "lead_time_days": 6,
+      "calculated_at": "2026-01-10T22:04:25.166364",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 42,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 42 + 10 - 50) = 2"
+      }
+    },
+    {
+      "order_id": "957a3d51-e8af-4fa5-ab92-5e334e0e3d5f",
+      "order_date": "2023-01-23",
+      "supplier_id": "SUP018",
+      "supplier_name": "Smith, Newman and Fowler",
+      "sku_id": "SKU000217",
+      "product_name": "Federal Personal Care Pro",
+      "demand": 49,
+      "available_stock": 50,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 9,
+      "order_quantity": 12,
+      "pack_size": 6,
+      "unit_price": 18.95,
+      "total_price": 227.39999999999998,
+      "lead_time_days": 4,
+      "calculated_at": "2026-01-10T22:04:25.172305",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 49,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 49 + 10 - 50) = 9"
+      }
+    }
+  ]
+}

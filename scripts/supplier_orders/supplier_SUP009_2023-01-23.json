@@ -1,0 +1,36 @@
+{
+  "supplier_id": "SUP009",
+  "supplier_name": "Williams, Sullivan and Mckinney",
+  "order_date": "2023-01-23",
+  "total_items": 1,
+  "total_value": 34.08,
+  "generated_at": "2026-01-10T22:04:25.248078",
+  "items": [
+    {
+      "order_id": "f3d7992b-81d0-4e76-9e0b-21b0d892b8eb",
+      "order_date": "2023-01-23",
+      "supplier_id": "SUP009",
+      "supplier_name": "Williams, Sullivan and Mckinney",
+      "sku_id": "SKU000236",
+      "product_name": "Cover Bakery Gold",
+      "demand": 41,
+      "available_stock": 50,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 1,
+      "order_quantity": 48,
+      "pack_size": 1,
+      "unit_price": 0.71,
+      "total_price": 34.08,
+      "lead_time_days": 5,
+      "calculated_at": "2026-01-10T22:04:25.174573",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 41,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 41 + 10 - 50) = 1"
+      }
+    }
+  ]
+}

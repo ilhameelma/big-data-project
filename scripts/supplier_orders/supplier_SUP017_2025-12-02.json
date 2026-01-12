@@ -2,31 +2,12 @@
   "supplier_id": "SUP017",
   "supplier_name": "Tate, Rodriguez and Buck",
   "order_date": "2025-12-02",
-  "total_items": 2,
-  "total_value": 239.52,
-  "generated_at": "2026-01-04T10:27:12.201940",
+  "total_items": 1,
+  "total_value": 100.56,
+  "generated_at": "2026-01-10T20:43:30.740821",
   "items": [
     {
-      "order_id": "3d0f7bfd-1cc3-4dda-a06c-7b673182178c",
-      "order_date": "2025-12-02",
-      "supplier_id": "SUP017",
-      "supplier_name": "Tate, Rodriguez and Buck",
-      "sku_id": "SKU000015",
-      "product_name": "There Beverages Basic",
-      "demand": 21,
-      "available_stock": 13,
-      "reserved_stock": 0,
-      "safety_stock": 10,
-      "net_demand": 18,
-      "order_quantity": 24,
-      "pack_size": 12,
-      "unit_price": 5.79,
-      "total_price": 138.96,
-      "lead_time_days": 6,
-      "calculated_at": "2026-01-04T10:27:12.199514"
-    },
-    {
-      "order_id": "f11fdb58-0d9e-47a0-938d-0c65e74308af",
+      "order_id": "478a0926-09cf-466d-9ca6-555c2d47b372",
       "order_date": "2025-12-02",
       "supplier_id": "SUP017",
       "supplier_name": "Tate, Rodriguez and Buck",
@@ -42,7 +23,14 @@
       "unit_price": 8.38,
       "total_price": 100.56,
       "lead_time_days": 1,
-      "calculated_at": "2026-01-04T10:27:12.200585"
+      "calculated_at": "2026-01-10T20:43:30.536305",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 52,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 52 + 10 - 50) = 12"
+      }
     }
   ]
 }

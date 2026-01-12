@@ -4,10 +4,10 @@
   "order_date": "2025-12-02",
   "total_items": 1,
   "total_value": 58.44,
-  "generated_at": "2026-01-04T10:27:12.208262",
+  "generated_at": "2026-01-10T20:43:30.658223",
   "items": [
     {
-      "order_id": "0a4d1d42-e8a8-4642-81b7-a57d302f4b52",
+      "order_id": "206874d2-df1e-44f0-9ff8-6f87916d77f9",
       "order_date": "2025-12-02",
       "supplier_id": "SUP014",
       "supplier_name": "Mitchell-Durham",
@@ -23,7 +23,14 @@
       "unit_price": 4.87,
       "total_price": 58.44,
       "lead_time_days": 3,
-      "calculated_at": "2026-01-04T10:27:12.199669"
+      "calculated_at": "2026-01-10T20:43:30.353896",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 41,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 41 + 10 - 50) = 1"
+      }
     }
   ]
 }

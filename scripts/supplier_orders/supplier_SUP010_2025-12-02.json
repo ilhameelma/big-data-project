@@ -4,10 +4,10 @@
   "order_date": "2025-12-02",
   "total_items": 1,
   "total_value": 454.56000000000006,
-  "generated_at": "2026-01-04T10:27:12.245620",
+  "generated_at": "2026-01-10T20:43:30.753824",
   "items": [
     {
-      "order_id": "c3aec58e-388c-4eb2-922b-c8fcb73c617c",
+      "order_id": "6911ca72-b623-455d-b420-f2bbd64b3a3b",
       "order_date": "2025-12-02",
       "supplier_id": "SUP010",
       "supplier_name": "David and Sons",
@@ -23,7 +23,14 @@
       "unit_price": 9.47,
       "total_price": 454.56000000000006,
       "lead_time_days": 5,
-      "calculated_at": "2026-01-04T10:27:12.200738"
+      "calculated_at": "2026-01-10T20:43:30.581724",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 48,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 48 + 10 - 50) = 8"
+      }
     }
   ]
 }

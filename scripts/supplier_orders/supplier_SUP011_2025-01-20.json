@@ -1,0 +1,36 @@
+{
+  "supplier_id": "SUP011",
+  "supplier_name": "Brooks Ltd",
+  "order_date": "2025-01-20",
+  "total_items": 1,
+  "total_value": 240.95999999999998,
+  "generated_at": "2026-01-08T21:29:05.524025",
+  "items": [
+    {
+      "order_id": "c70f2e25-9b1b-47f2-8377-2877ea1fab84",
+      "order_date": "2025-01-20",
+      "supplier_id": "SUP011",
+      "supplier_name": "Brooks Ltd",
+      "sku_id": "SKU000272",
+      "product_name": "Scene Snacks Basic",
+      "demand": 70,
+      "available_stock": 50,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 30,
+      "order_quantity": 48,
+      "pack_size": 24,
+      "unit_price": 5.02,
+      "total_price": 240.95999999999998,
+      "lead_time_days": 5,
+      "calculated_at": "2026-01-08T21:29:05.407432",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 70,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 70 + 10 - 50) = 30"
+      }
+    }
+  ]
+}

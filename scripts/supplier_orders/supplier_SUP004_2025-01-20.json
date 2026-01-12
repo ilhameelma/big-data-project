@@ -1,0 +1,88 @@
+{
+  "supplier_id": "SUP004",
+  "supplier_name": "Cabrera-Moon",
+  "order_date": "2025-01-20",
+  "total_items": 3,
+  "total_value": 211.92000000000002,
+  "generated_at": "2026-01-08T21:29:05.517222",
+  "items": [
+    {
+      "order_id": "d01946b1-0d6b-4d88-b9ef-27e17570a497",
+      "order_date": "2025-01-20",
+      "supplier_id": "SUP004",
+      "supplier_name": "Cabrera-Moon",
+      "sku_id": "SKU000241",
+      "product_name": "Action Beverages Gold",
+      "demand": 42,
+      "available_stock": 50,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 2,
+      "order_quantity": 12,
+      "pack_size": 12,
+      "unit_price": 7.44,
+      "total_price": 89.28,
+      "lead_time_days": 6,
+      "calculated_at": "2026-01-08T21:29:05.404017",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 42,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 42 + 10 - 50) = 2"
+      }
+    },
+    {
+      "order_id": "b6a3097a-c702-4cfd-ac3f-3bb9f494ff45",
+      "order_date": "2025-01-20",
+      "supplier_id": "SUP004",
+      "supplier_name": "Cabrera-Moon",
+      "sku_id": "SKU000336",
+      "product_name": "Television Cleaning Gold",
+      "demand": 51,
+      "available_stock": 50,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 11,
+      "order_quantity": 12,
+      "pack_size": 6,
+      "unit_price": 8.8,
+      "total_price": 105.60000000000001,
+      "lead_time_days": 3,
+      "calculated_at": "2026-01-08T21:29:05.414824",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 51,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 51 + 10 - 50) = 11"
+      }
+    },
+    {
+      "order_id": "eb5203f5-4449-452a-9567-bffc9885616f",
+      "order_date": "2025-01-20",
+      "supplier_id": "SUP004",
+      "supplier_name": "Cabrera-Moon",
+      "sku_id": "SKU000370",
+      "product_name": "Reduce Personal Care Organic",
+      "demand": 46,
+      "available_stock": 50,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 6,
+      "order_quantity": 6,
+      "pack_size": 6,
+      "unit_price": 2.84,
+      "total_price": 17.04,
+      "lead_time_days": 1,
+      "calculated_at": "2026-01-08T21:29:05.423819",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 46,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 46 + 10 - 50) = 6"
+      }
+    }
+  ]
+}

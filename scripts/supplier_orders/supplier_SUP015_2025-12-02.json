@@ -2,31 +2,12 @@
   "supplier_id": "SUP015",
   "supplier_name": "English-Hanna",
   "order_date": "2025-12-02",
-  "total_items": 2,
-  "total_value": 178.16000000000003,
-  "generated_at": "2026-01-04T10:27:12.221964",
+  "total_items": 1,
+  "total_value": 87.2,
+  "generated_at": "2026-01-10T20:43:30.729359",
   "items": [
     {
-      "order_id": "5d934322-2179-4710-ba13-79cd9e91ee8b",
-      "order_date": "2025-12-02",
-      "supplier_id": "SUP015",
-      "supplier_name": "English-Hanna",
-      "sku_id": "SKU000164",
-      "product_name": "Wrong Beverages Gold",
-      "demand": 22,
-      "available_stock": 26,
-      "reserved_stock": 0,
-      "safety_stock": 10,
-      "net_demand": 6,
-      "order_quantity": 12,
-      "pack_size": 12,
-      "unit_price": 7.58,
-      "total_price": 90.96000000000001,
-      "lead_time_days": 6,
-      "calculated_at": "2026-01-04T10:27:12.199960"
-    },
-    {
-      "order_id": "a7a22fcd-8953-48a9-a68a-e3737fbe8b0d",
+      "order_id": "39674fc9-5c39-4a29-9087-2a86613308fc",
       "order_date": "2025-12-02",
       "supplier_id": "SUP015",
       "supplier_name": "English-Hanna",
@@ -42,7 +23,14 @@
       "unit_price": 8.72,
       "total_price": 87.2,
       "lead_time_days": 2,
-      "calculated_at": "2026-01-04T10:27:12.200503"
+      "calculated_at": "2026-01-10T20:43:30.523897",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 45,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 45 + 10 - 50) = 5"
+      }
     }
   ]
 }

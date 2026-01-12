@@ -4,10 +4,10 @@
   "order_date": "2025-01-18",
   "total_items": 1,
   "total_value": 143.84,
-  "generated_at": "2026-01-08T15:53:23.895498",
+  "generated_at": "2026-01-08T20:05:51.374313",
   "items": [
     {
-      "order_id": "6b72ace0-dd7e-415c-b543-e8aa6ae997f6",
+      "order_id": "cb1f4556-5315-42f4-b1c2-ba31e8cfe205",
       "order_date": "2025-01-18",
       "supplier_id": "SUP019",
       "supplier_name": "Moore-Johnson",
@@ -23,7 +23,7 @@
       "unit_price": 17.98,
       "total_price": 143.84,
       "lead_time_days": 6,
-      "calculated_at": "2026-01-08T15:53:23.732128",
+      "calculated_at": "2026-01-08T20:05:51.213471",
       "calculation_details": {
         "formula": "max(0, demand + safety_stock - available_stock)",
         "demand": 48,

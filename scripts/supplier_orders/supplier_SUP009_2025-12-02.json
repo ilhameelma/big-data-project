@@ -4,10 +4,10 @@
   "order_date": "2025-12-02",
   "total_items": 1,
   "total_value": 19.28,
-  "generated_at": "2026-01-04T10:27:12.216519",
+  "generated_at": "2026-01-10T20:43:30.679071",
   "items": [
     {
-      "order_id": "c650ece3-ea89-4d6a-be10-4fa293311274",
+      "order_id": "628f71b2-2e58-4acd-b278-000a77f9f07a",
       "order_date": "2025-12-02",
       "supplier_id": "SUP009",
       "supplier_name": "Williams, Sullivan and Mckinney",
@@ -23,7 +23,14 @@
       "unit_price": 9.64,
       "total_price": 19.28,
       "lead_time_days": 6,
-      "calculated_at": "2026-01-04T10:27:12.199841"
+      "calculated_at": "2026-01-10T20:43:30.402258",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 42,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 42 + 10 - 50) = 2"
+      }
     }
   ]
 }

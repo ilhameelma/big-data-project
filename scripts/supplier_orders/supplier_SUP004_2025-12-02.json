@@ -4,10 +4,10 @@
   "order_date": "2025-12-02",
   "total_items": 3,
   "total_value": 894.28,
-  "generated_at": "2026-01-04T10:27:12.228387",
+  "generated_at": "2026-01-10T20:43:30.701100",
   "items": [
     {
-      "order_id": "7b76a72e-1110-45f7-8f4e-55cc69db7544",
+      "order_id": "960df4b7-9eb6-44c1-bd6b-3db1609a3724",
       "order_date": "2025-12-02",
       "supplier_id": "SUP004",
       "supplier_name": "Cabrera-Moon",
@@ -23,10 +23,17 @@
       "unit_price": 1.42,
       "total_price": 14.2,
       "lead_time_days": 2,
-      "calculated_at": "2026-01-04T10:27:12.200156"
+      "calculated_at": "2026-01-10T20:43:30.477663",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 45,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 45 + 10 - 50) = 5"
+      }
     },
     {
-      "order_id": "3a7a73c1-4daa-4483-a51a-356e70b9f439",
+      "order_id": "087e6792-5aa0-489a-ba75-d1babaf67aa6",
       "order_date": "2025-12-02",
       "supplier_id": "SUP004",
       "supplier_name": "Cabrera-Moon",
@@ -42,10 +49,17 @@
       "unit_price": 13.94,
       "total_price": 167.28,
       "lead_time_days": 6,
-      "calculated_at": "2026-01-04T10:27:12.200460"
+      "calculated_at": "2026-01-10T20:43:30.517094",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 48,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 48 + 10 - 50) = 8"
+      }
     },
     {
-      "order_id": "899532c0-087a-4f54-b380-d8813214c4fb",
+      "order_id": "3b44ec3e-114d-4ded-98c5-78ed55545852",
       "order_date": "2025-12-02",
       "supplier_id": "SUP004",
       "supplier_name": "Cabrera-Moon",
@@ -61,7 +75,14 @@
       "unit_price": 14.85,
       "total_price": 712.8,
       "lead_time_days": 4,
-      "calculated_at": "2026-01-04T10:27:12.200854"
+      "calculated_at": "2026-01-10T20:43:30.641940",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 45,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 45 + 10 - 50) = 5"
+      }
     }
   ]
 }

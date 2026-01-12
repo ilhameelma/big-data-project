@@ -4,10 +4,10 @@
   "order_date": "2025-01-18",
   "total_items": 6,
   "total_value": 955.8,
-  "generated_at": "2026-01-08T15:53:23.847917",
+  "generated_at": "2026-01-08T20:05:51.336031",
   "items": [
     {
-      "order_id": "3354ae24-a215-42ed-b027-cb98971eb6d8",
+      "order_id": "232a7d59-1029-45ef-b540-eaf9035721ea",
       "order_date": "2025-01-18",
       "supplier_id": "SUP010",
       "supplier_name": "David and Sons",
@@ -23,7 +23,7 @@
       "unit_price": 5.26,
       "total_price": 126.24,
       "lead_time_days": 6,
-      "calculated_at": "2026-01-08T15:53:23.676654",
+      "calculated_at": "2026-01-08T20:05:51.164091",
       "calculation_details": {
         "formula": "max(0, demand + safety_stock - available_stock)",
         "demand": 41,
@@ -33,7 +33,7 @@
       }
     },
     {
-      "order_id": "96790e0b-31d0-4ada-8c53-8dcb745e168e",
+      "order_id": "52387d20-478f-4397-b949-6c3b626915fd",
       "order_date": "2025-01-18",
       "supplier_id": "SUP010",
       "supplier_name": "David and Sons",
@@ -49,7 +49,7 @@
       "unit_price": 2.09,
       "total_price": 100.32,
       "lead_time_days": 2,
-      "calculated_at": "2026-01-08T15:53:23.711132",
+      "calculated_at": "2026-01-08T20:05:51.192680",
       "calculation_details": {
         "formula": "max(0, demand + safety_stock - available_stock)",
         "demand": 49,
@@ -59,7 +59,7 @@
       }
     },
     {
-      "order_id": "15312976-d8d7-405d-a813-046d04b3a69f",
+      "order_id": "236c9499-572e-4339-86ed-8bc65b4098fe",
       "order_date": "2025-01-18",
       "supplier_id": "SUP010",
       "supplier_name": "David and Sons",
@@ -75,7 +75,7 @@
       "unit_price": 3.69,
       "total_price": 88.56,
       "lead_time_days": 1,
-      "calculated_at": "2026-01-08T15:53:23.719200",
+      "calculated_at": "2026-01-08T20:05:51.200816",
       "calculation_details": {
         "formula": "max(0, demand + safety_stock - available_stock)",
         "demand": 42,
@@ -85,7 +85,7 @@
       }
     },
     {
-      "order_id": "5018a91b-3837-4b6c-ad4b-f1f8653fd0d9",
+      "order_id": "fe3f2728-2bbe-4b1e-860b-6819c19095f8",
       "order_date": "2025-01-18",
       "supplier_id": "SUP010",
       "supplier_name": "David and Sons",
@@ -101,7 +101,7 @@
       "unit_price": 17.91,
       "total_price": 214.92000000000002,
       "lead_time_days": 3,
-      "calculated_at": "2026-01-08T15:53:23.732855",
+      "calculated_at": "2026-01-08T20:05:51.214093",
       "calculation_details": {
         "formula": "max(0, demand + safety_stock - available_stock)",
         "demand": 45,
@@ -111,7 +111,7 @@
       }
     },
     {
-      "order_id": "d7099734-a103-46d3-912f-92764b807fcc",
+      "order_id": "b68a0e7f-1003-40fa-be91-ba7b37e17a5f",
       "order_date": "2025-01-18",
       "supplier_id": "SUP010",
       "supplier_name": "David and Sons",
@@ -127,7 +127,7 @@
       "unit_price": 9.03,
       "total_price": 216.71999999999997,
       "lead_time_days": 4,
-      "calculated_at": "2026-01-08T15:53:23.797337",
+      "calculated_at": "2026-01-08T20:05:51.280891",
       "calculation_details": {
         "formula": "max(0, demand + safety_stock - available_stock)",
         "demand": 43,
@@ -137,7 +137,7 @@
       }
     },
     {
-      "order_id": "93ad2d38-4fd6-4e72-9932-d6f1e82f70a5",
+      "order_id": "50925f59-f941-4999-b43f-cdaae93c7e8d",
       "order_date": "2025-01-18",
       "supplier_id": "SUP010",
       "supplier_name": "David and Sons",
@@ -153,7 +153,7 @@
       "unit_price": 8.71,
       "total_price": 209.04000000000002,
       "lead_time_days": 5,
-      "calculated_at": "2026-01-08T15:53:23.810467",
+      "calculated_at": "2026-01-08T20:05:51.295983",
       "calculation_details": {
         "formula": "max(0, demand + safety_stock - available_stock)",
         "demand": 54,

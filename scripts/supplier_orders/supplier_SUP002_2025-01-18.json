@@ -4,10 +4,10 @@
   "order_date": "2025-01-18",
   "total_items": 3,
   "total_value": 430.44,
-  "generated_at": "2026-01-08T15:53:23.877639",
+  "generated_at": "2026-01-08T20:05:51.361879",
   "items": [
     {
-      "order_id": "641ee138-575d-45f9-a920-ef87d6007dd9",
+      "order_id": "87efbcb6-26b1-4c87-a346-c5954f68ebb4",
       "order_date": "2025-01-18",
       "supplier_id": "SUP002",
       "supplier_name": "Kennedy-Liu",
@@ -23,7 +23,7 @@
       "unit_price": 7.24,
       "total_price": 86.88,
       "lead_time_days": 6,
-      "calculated_at": "2026-01-08T15:53:23.709601",
+      "calculated_at": "2026-01-08T20:05:51.190911",
       "calculation_details": {
         "formula": "max(0, demand + safety_stock - available_stock)",
         "demand": 48,
@@ -33,7 +33,7 @@
       }
     },
     {
-      "order_id": "f200272b-2752-4501-959d-ffcad0ed7c2f",
+      "order_id": "d6b56d89-4a83-4b8f-ad86-8038b53bac55",
       "order_date": "2025-01-18",
       "supplier_id": "SUP002",
       "supplier_name": "Kennedy-Liu",
@@ -49,7 +49,7 @@
       "unit_price": 13.02,
       "total_price": 156.24,
       "lead_time_days": 4,
-      "calculated_at": "2026-01-08T15:53:23.783362",
+      "calculated_at": "2026-01-08T20:05:51.265426",
       "calculation_details": {
         "formula": "max(0, demand + safety_stock - available_stock)",
         "demand": 51,
@@ -59,7 +59,7 @@
       }
     },
     {
-      "order_id": "c59cf170-20dd-45ef-8ae3-9e3aba73af92",
+      "order_id": "db2c0a2f-c8e2-4fb8-8efd-c0aeb09e0c74",
       "order_date": "2025-01-18",
       "supplier_id": "SUP002",
       "supplier_name": "Kennedy-Liu",
@@ -75,7 +75,7 @@
       "unit_price": 15.61,
       "total_price": 187.32,
       "lead_time_days": 3,
-      "calculated_at": "2026-01-08T15:53:23.799196",
+      "calculated_at": "2026-01-08T20:05:51.282971",
       "calculation_details": {
         "formula": "max(0, demand + safety_stock - available_stock)",
         "demand": 45,

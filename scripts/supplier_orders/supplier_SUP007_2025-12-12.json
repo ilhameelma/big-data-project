@@ -1,0 +1,88 @@
+{
+  "supplier_id": "SUP007",
+  "supplier_name": "Hernandez, Gonzalez and Curry",
+  "order_date": "2025-12-12",
+  "total_items": 3,
+  "total_value": 726.38,
+  "generated_at": "2026-01-10T22:05:24.066957",
+  "items": [
+    {
+      "order_id": "33f83221-a0af-4264-8b3b-6d796797bdfd",
+      "order_date": "2025-12-12",
+      "supplier_id": "SUP007",
+      "supplier_name": "Hernandez, Gonzalez and Curry",
+      "sku_id": "SKU000039",
+      "product_name": "Wrong Grocery Gold",
+      "demand": 50,
+      "available_stock": 50,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 10,
+      "order_quantity": 10,
+      "pack_size": 1,
+      "unit_price": 15.35,
+      "total_price": 153.5,
+      "lead_time_days": 4,
+      "calculated_at": "2026-01-10T22:05:23.922787",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 50,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 50 + 10 - 50) = 10"
+      }
+    },
+    {
+      "order_id": "33854ab1-5546-4ba2-9374-bb3982ed2c6b",
+      "order_date": "2025-12-12",
+      "supplier_id": "SUP007",
+      "supplier_name": "Hernandez, Gonzalez and Curry",
+      "sku_id": "SKU000131",
+      "product_name": "Pay Personal Care Pro",
+      "demand": 41,
+      "available_stock": 50,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 1,
+      "order_quantity": 6,
+      "pack_size": 6,
+      "unit_price": 9.64,
+      "total_price": 57.84,
+      "lead_time_days": 5,
+      "calculated_at": "2026-01-10T22:05:23.933546",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 41,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 41 + 10 - 50) = 1"
+      }
+    },
+    {
+      "order_id": "3eff84a8-c188-40d8-8be0-a4617f169c5b",
+      "order_date": "2025-12-12",
+      "supplier_id": "SUP007",
+      "supplier_name": "Hernandez, Gonzalez and Curry",
+      "sku_id": "SKU000168",
+      "product_name": "Bill Dairy Basic",
+      "demand": 48,
+      "available_stock": 50,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 8,
+      "order_quantity": 48,
+      "pack_size": 6,
+      "unit_price": 10.73,
+      "total_price": 515.04,
+      "lead_time_days": 2,
+      "calculated_at": "2026-01-10T22:05:23.937029",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 48,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 48 + 10 - 50) = 8"
+      }
+    }
+  ]
+}

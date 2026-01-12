@@ -1,0 +1,88 @@
+{
+  "supplier_id": "SUP013",
+  "supplier_name": "Harris Ltd",
+  "order_date": "2025-01-20",
+  "total_items": 3,
+  "total_value": 380.58000000000004,
+  "generated_at": "2026-01-08T21:29:05.464751",
+  "items": [
+    {
+      "order_id": "30039094-ec3c-4cf5-9ced-e8c81e514ce3",
+      "order_date": "2025-01-20",
+      "supplier_id": "SUP013",
+      "supplier_name": "Harris Ltd",
+      "sku_id": "SKU000020",
+      "product_name": "Often Personal Care Gold",
+      "demand": 41,
+      "available_stock": 50,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 1,
+      "order_quantity": 6,
+      "pack_size": 6,
+      "unit_price": 12.65,
+      "total_price": 75.9,
+      "lead_time_days": 3,
+      "calculated_at": "2026-01-08T21:29:05.375936",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 41,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 41 + 10 - 50) = 1"
+      }
+    },
+    {
+      "order_id": "cada7514-d4d0-4fcc-b146-6b1e578e6c57",
+      "order_date": "2025-01-20",
+      "supplier_id": "SUP013",
+      "supplier_name": "Harris Ltd",
+      "sku_id": "SKU000046",
+      "product_name": "Area Beverages Basic",
+      "demand": 50,
+      "available_stock": 50,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 10,
+      "order_quantity": 12,
+      "pack_size": 12,
+      "unit_price": 13.37,
+      "total_price": 160.44,
+      "lead_time_days": 3,
+      "calculated_at": "2026-01-08T21:29:05.379190",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 50,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 50 + 10 - 50) = 10"
+      }
+    },
+    {
+      "order_id": "03b13e11-8c0b-478f-9419-66c1422824d5",
+      "order_date": "2025-01-20",
+      "supplier_id": "SUP013",
+      "supplier_name": "Harris Ltd",
+      "sku_id": "SKU000072",
+      "product_name": "Color Beverages Pro",
+      "demand": 52,
+      "available_stock": 50,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 12,
+      "order_quantity": 12,
+      "pack_size": 1,
+      "unit_price": 12.02,
+      "total_price": 144.24,
+      "lead_time_days": 3,
+      "calculated_at": "2026-01-08T21:29:05.382349",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 52,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 52 + 10 - 50) = 12"
+      }
+    }
+  ]
+}

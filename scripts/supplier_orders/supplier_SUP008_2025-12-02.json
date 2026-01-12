@@ -4,10 +4,10 @@
   "order_date": "2025-12-02",
   "total_items": 1,
   "total_value": 105.39999999999999,
-  "generated_at": "2026-01-04T10:27:12.240069",
+  "generated_at": "2026-01-10T20:43:30.735100",
   "items": [
     {
-      "order_id": "e6825950-96fa-4290-bb71-dc47297fa535",
+      "order_id": "ed0e74ea-fb94-42ba-ae0d-01a7996a9d89",
       "order_date": "2025-12-02",
       "supplier_id": "SUP008",
       "supplier_name": "Chandler LLC",
@@ -23,7 +23,14 @@
       "unit_price": 10.54,
       "total_price": 105.39999999999999,
       "lead_time_days": 2,
-      "calculated_at": "2026-01-04T10:27:12.200527"
+      "calculated_at": "2026-01-10T20:43:30.525449",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 42,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 42 + 10 - 50) = 2"
+      }
     }
   ]
 }

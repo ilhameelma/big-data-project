@@ -4,10 +4,10 @@
   "order_date": "2025-01-18",
   "total_items": 4,
   "total_value": 341.44,
-  "generated_at": "2026-01-08T15:53:23.902847",
+  "generated_at": "2026-01-08T20:05:51.378051",
   "items": [
     {
-      "order_id": "1addabeb-23fb-41fc-bfe3-dee27608711b",
+      "order_id": "71379ad6-928e-4944-a9c0-e8f126769a8c",
       "order_date": "2025-01-18",
       "supplier_id": "SUP006",
       "supplier_name": "Mack-Bowman",
@@ -23,7 +23,7 @@
       "unit_price": 0.94,
       "total_price": 9.399999999999999,
       "lead_time_days": 2,
-      "calculated_at": "2026-01-08T15:53:23.734276",
+      "calculated_at": "2026-01-08T20:05:51.215414",
       "calculation_details": {
         "formula": "max(0, demand + safety_stock - available_stock)",
         "demand": 50,
@@ -33,7 +33,7 @@
       }
     },
     {
-      "order_id": "a330c29f-94b4-436d-8a5d-fd13a4630e56",
+      "order_id": "f7c08560-6639-4796-945e-f04ba8bf23c2",
       "order_date": "2025-01-18",
       "supplier_id": "SUP006",
       "supplier_name": "Mack-Bowman",
@@ -49,7 +49,7 @@
       "unit_price": 3.17,
       "total_price": 76.08,
       "lead_time_days": 1,
-      "calculated_at": "2026-01-08T15:53:23.739673",
+      "calculated_at": "2026-01-08T20:05:51.222468",
       "calculation_details": {
         "formula": "max(0, demand + safety_stock - available_stock)",
         "demand": 41,
@@ -59,7 +59,7 @@
       }
     },
     {
-      "order_id": "8fd4b727-fb53-4386-950a-ff0224336f4a",
+      "order_id": "65957af0-4553-4618-985b-8ef2514467df",
       "order_date": "2025-01-18",
       "supplier_id": "SUP006",
       "supplier_name": "Mack-Bowman",
@@ -75,7 +75,7 @@
       "unit_price": 13.5,
       "total_price": 27.0,
       "lead_time_days": 3,
-      "calculated_at": "2026-01-08T15:53:23.773249",
+      "calculated_at": "2026-01-08T20:05:51.254490",
       "calculation_details": {
         "formula": "max(0, demand + safety_stock - available_stock)",
         "demand": 42,
@@ -85,7 +85,7 @@
       }
     },
     {
-      "order_id": "2b865996-5364-48b7-8a4f-4a24c0028c86",
+      "order_id": "d4fd4e96-582c-46d2-96af-1d8977432281",
       "order_date": "2025-01-18",
       "supplier_id": "SUP006",
       "supplier_name": "Mack-Bowman",
@@ -101,7 +101,7 @@
       "unit_price": 9.54,
       "total_price": 228.95999999999998,
       "lead_time_days": 1,
-      "calculated_at": "2026-01-08T15:53:23.777629",
+      "calculated_at": "2026-01-08T20:05:51.259253",
       "calculation_details": {
         "formula": "max(0, demand + safety_stock - available_stock)",
         "demand": 41,

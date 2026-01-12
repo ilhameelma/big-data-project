@@ -1,0 +1,36 @@
+{
+  "supplier_id": "SUP019",
+  "supplier_name": "Moore-Johnson",
+  "order_date": "2026-01-10",
+  "total_items": 1,
+  "total_value": 143.84,
+  "generated_at": "2026-01-10T19:59:03.370656",
+  "items": [
+    {
+      "order_id": "1a8bae47-033f-4565-8cc7-c274d5d652f7",
+      "order_date": "2026-01-10",
+      "supplier_id": "SUP019",
+      "supplier_name": "Moore-Johnson",
+      "sku_id": "SKU000224",
+      "product_name": "Officer Beverages Organic",
+      "demand": 48,
+      "available_stock": 50,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 8,
+      "order_quantity": 8,
+      "pack_size": 1,
+      "unit_price": 17.98,
+      "total_price": 143.84,
+      "lead_time_days": 6,
+      "calculated_at": "2026-01-10T19:59:03.089088",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 48,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 48 + 10 - 50) = 8"
+      }
+    }
+  ]
+}

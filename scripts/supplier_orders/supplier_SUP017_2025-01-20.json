@@ -1,0 +1,62 @@
+{
+  "supplier_id": "SUP017",
+  "supplier_name": "Tate, Rodriguez and Buck",
+  "order_date": "2025-01-20",
+  "total_items": 2,
+  "total_value": 457.24,
+  "generated_at": "2026-01-08T21:29:05.486971",
+  "items": [
+    {
+      "order_id": "b0158dc1-965c-474c-957a-8e8a0fcc0bcc",
+      "order_date": "2025-01-20",
+      "supplier_id": "SUP017",
+      "supplier_name": "Tate, Rodriguez and Buck",
+      "sku_id": "SKU000137",
+      "product_name": "Rise Grocery Pro",
+      "demand": 50,
+      "available_stock": 50,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 10,
+      "order_quantity": 24,
+      "pack_size": 6,
+      "unit_price": 15.56,
+      "total_price": 373.44,
+      "lead_time_days": 6,
+      "calculated_at": "2026-01-08T21:29:05.391132",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 50,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 50 + 10 - 50) = 10"
+      }
+    },
+    {
+      "order_id": "6d2f5a59-58a4-4c63-8ef2-a27704d5752e",
+      "order_date": "2025-01-20",
+      "supplier_id": "SUP017",
+      "supplier_name": "Tate, Rodriguez and Buck",
+      "sku_id": "SKU000368",
+      "product_name": "Able Personal Care Gold",
+      "demand": 41,
+      "available_stock": 50,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 1,
+      "order_quantity": 10,
+      "pack_size": 6,
+      "unit_price": 8.38,
+      "total_price": 83.80000000000001,
+      "lead_time_days": 1,
+      "calculated_at": "2026-01-08T21:29:05.419159",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 41,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 41 + 10 - 50) = 1"
+      }
+    }
+  ]
+}

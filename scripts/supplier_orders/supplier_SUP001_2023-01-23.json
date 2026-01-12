@@ -1,0 +1,62 @@
+{
+  "supplier_id": "SUP001",
+  "supplier_name": "King-Flores",
+  "order_date": "2023-01-23",
+  "total_items": 2,
+  "total_value": 267.9,
+  "generated_at": "2026-01-10T22:04:25.232552",
+  "items": [
+    {
+      "order_id": "b6e0aae3-c8b4-4be2-b7b7-22c49b84f262",
+      "order_date": "2023-01-23",
+      "supplier_id": "SUP001",
+      "supplier_name": "King-Flores",
+      "sku_id": "SKU000145",
+      "product_name": "Where Grocery Gold",
+      "demand": 45,
+      "available_stock": 50,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 5,
+      "order_quantity": 6,
+      "pack_size": 6,
+      "unit_price": 19.61,
+      "total_price": 117.66,
+      "lead_time_days": 6,
+      "calculated_at": "2026-01-10T22:04:25.163815",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 45,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 45 + 10 - 50) = 5"
+      }
+    },
+    {
+      "order_id": "c1d35b65-3939-4f5f-861f-c7227ada17b1",
+      "order_date": "2023-01-23",
+      "supplier_id": "SUP001",
+      "supplier_name": "King-Flores",
+      "sku_id": "SKU000312",
+      "product_name": "Production Frozen Organic",
+      "demand": 41,
+      "available_stock": 50,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 1,
+      "order_quantity": 12,
+      "pack_size": 12,
+      "unit_price": 12.52,
+      "total_price": 150.24,
+      "lead_time_days": 5,
+      "calculated_at": "2026-01-10T22:04:25.184592",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 41,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 41 + 10 - 50) = 1"
+      }
+    }
+  ]
+}

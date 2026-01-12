@@ -4,10 +4,10 @@
   "order_date": "2025-12-02",
   "total_items": 2,
   "total_value": 35.34,
-  "generated_at": "2026-01-04T10:27:12.237364",
+  "generated_at": "2026-01-10T20:43:30.719708",
   "items": [
     {
-      "order_id": "777079fa-240b-415b-bfb4-0a2ad259664f",
+      "order_id": "8b60f34f-f2f1-4262-a471-c3ffeadba189",
       "order_date": "2025-12-02",
       "supplier_id": "SUP001",
       "supplier_name": "King-Flores",
@@ -23,10 +23,17 @@
       "unit_price": 2.03,
       "total_price": 12.18,
       "lead_time_days": 2,
-      "calculated_at": "2026-01-04T10:27:12.200440"
+      "calculated_at": "2026-01-10T20:43:30.516600",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 42,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 42 + 10 - 50) = 2"
+      }
     },
     {
-      "order_id": "57be4bff-7a9f-4131-96bb-ef1fee6c77dc",
+      "order_id": "0fa1a4c0-0476-490e-b262-92bbb6f4db08",
       "order_date": "2025-12-02",
       "supplier_id": "SUP001",
       "supplier_name": "King-Flores",
@@ -42,7 +49,14 @@
       "unit_price": 1.93,
       "total_price": 23.16,
       "lead_time_days": 2,
-      "calculated_at": "2026-01-04T10:27:12.200611"
+      "calculated_at": "2026-01-10T20:43:30.537821",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 44,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 44 + 10 - 50) = 4"
+      }
     }
   ]
 }

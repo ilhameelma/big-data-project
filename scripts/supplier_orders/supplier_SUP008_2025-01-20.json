@@ -1,0 +1,36 @@
+{
+  "supplier_id": "SUP008",
+  "supplier_name": "Chandler LLC",
+  "order_date": "2025-01-20",
+  "total_items": 1,
+  "total_value": 121.92,
+  "generated_at": "2026-01-08T21:29:05.520429",
+  "items": [
+    {
+      "order_id": "b86bd4bc-5956-4b05-97ed-bc21a76456e8",
+      "order_date": "2025-01-20",
+      "supplier_id": "SUP008",
+      "supplier_name": "Chandler LLC",
+      "sku_id": "SKU000246",
+      "product_name": "Sell Cleaning Pro",
+      "demand": 43,
+      "available_stock": 50,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 3,
+      "order_quantity": 12,
+      "pack_size": 12,
+      "unit_price": 10.16,
+      "total_price": 121.92,
+      "lead_time_days": 5,
+      "calculated_at": "2026-01-08T21:29:05.404685",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 43,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 43 + 10 - 50) = 3"
+      }
+    }
+  ]
+}

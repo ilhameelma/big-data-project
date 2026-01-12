@@ -4,10 +4,10 @@
   "order_date": "2025-12-02",
   "total_items": 1,
   "total_value": 137.79999999999998,
-  "generated_at": "2026-01-04T10:27:12.243395",
+  "generated_at": "2026-01-10T20:43:30.748996",
   "items": [
     {
-      "order_id": "8f4c3b39-e866-40e8-a3ef-48bb78fa5c68",
+      "order_id": "011f9a9d-8a9b-4480-92a1-e9dfcbed91cd",
       "order_date": "2025-12-02",
       "supplier_id": "SUP000",
       "supplier_name": "Nichols-Horton",
@@ -23,7 +23,14 @@
       "unit_price": 13.78,
       "total_price": 137.79999999999998,
       "lead_time_days": 3,
-      "calculated_at": "2026-01-04T10:27:12.200648"
+      "calculated_at": "2026-01-10T20:43:30.542860",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 43,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 43 + 10 - 50) = 3"
+      }
     }
   ]
 }

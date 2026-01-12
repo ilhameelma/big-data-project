@@ -1,0 +1,88 @@
+{
+  "supplier_id": "SUP015",
+  "supplier_name": "English-Hanna",
+  "order_date": "2025-01-20",
+  "total_items": 3,
+  "total_value": 557.46,
+  "generated_at": "2026-01-08T21:29:05.456486",
+  "items": [
+    {
+      "order_id": "18f5f0f3-6d2e-4e85-98fc-fac011a22629",
+      "order_date": "2025-01-20",
+      "supplier_id": "SUP015",
+      "supplier_name": "English-Hanna",
+      "sku_id": "SKU000000",
+      "product_name": "Politics Beverages Organic",
+      "demand": 45,
+      "available_stock": 50,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 5,
+      "order_quantity": 12,
+      "pack_size": 12,
+      "unit_price": 19.04,
+      "total_price": 228.48,
+      "lead_time_days": 1,
+      "calculated_at": "2026-01-08T21:29:05.373806",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 45,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 45 + 10 - 50) = 5"
+      }
+    },
+    {
+      "order_id": "712eff37-64d4-416c-89b5-ac8489679d49",
+      "order_date": "2025-01-20",
+      "supplier_id": "SUP015",
+      "supplier_name": "English-Hanna",
+      "sku_id": "SKU000105",
+      "product_name": "Quality Cleaning Organic",
+      "demand": 56,
+      "available_stock": 50,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 16,
+      "order_quantity": 16,
+      "pack_size": 1,
+      "unit_price": 15.9,
+      "total_price": 254.4,
+      "lead_time_days": 1,
+      "calculated_at": "2026-01-08T21:29:05.387320",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 56,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 56 + 10 - 50) = 16"
+      }
+    },
+    {
+      "order_id": "b89e0622-6914-4aa3-816a-e7a06546e4a0",
+      "order_date": "2025-01-20",
+      "supplier_id": "SUP015",
+      "supplier_name": "English-Hanna",
+      "sku_id": "SKU000160",
+      "product_name": "Nature Dairy Organic",
+      "demand": 51,
+      "available_stock": 50,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 11,
+      "order_quantity": 11,
+      "pack_size": 1,
+      "unit_price": 6.78,
+      "total_price": 74.58,
+      "lead_time_days": 1,
+      "calculated_at": "2026-01-08T21:29:05.393639",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 51,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 51 + 10 - 50) = 11"
+      }
+    }
+  ]
+}

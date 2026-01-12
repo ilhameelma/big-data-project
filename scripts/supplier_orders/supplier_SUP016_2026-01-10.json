@@ -1,0 +1,36 @@
+{
+  "supplier_id": "SUP016",
+  "supplier_name": "Price Ltd",
+  "order_date": "2026-01-10",
+  "total_items": 1,
+  "total_value": 153.12,
+  "generated_at": "2026-01-10T19:59:03.359083",
+  "items": [
+    {
+      "order_id": "65a31e59-b691-4629-81a5-6b901e8456f4",
+      "order_date": "2026-01-10",
+      "supplier_id": "SUP016",
+      "supplier_name": "Price Ltd",
+      "sku_id": "SKU000185",
+      "product_name": "Toward Grocery Pro",
+      "demand": 54,
+      "available_stock": 50,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 14,
+      "order_quantity": 24,
+      "pack_size": 12,
+      "unit_price": 6.38,
+      "total_price": 153.12,
+      "lead_time_days": 3,
+      "calculated_at": "2026-01-10T19:59:03.066686",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 54,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 54 + 10 - 50) = 14"
+      }
+    }
+  ]
+}

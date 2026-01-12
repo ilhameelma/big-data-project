@@ -1,0 +1,88 @@
+{
+  "supplier_id": "SUP006",
+  "supplier_name": "Mack-Bowman",
+  "order_date": "2023-01-23",
+  "total_items": 3,
+  "total_value": 274.97999999999996,
+  "generated_at": "2026-01-10T22:04:25.257220",
+  "items": [
+    {
+      "order_id": "ac79f935-d7f3-4a20-b03a-5b16b2037fee",
+      "order_date": "2023-01-23",
+      "supplier_id": "SUP006",
+      "supplier_name": "Mack-Bowman",
+      "sku_id": "SKU000358",
+      "product_name": "Pay Grocery Basic",
+      "demand": 42,
+      "available_stock": 50,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 2,
+      "order_quantity": 2,
+      "pack_size": 1,
+      "unit_price": 13.5,
+      "total_price": 27.0,
+      "lead_time_days": 3,
+      "calculated_at": "2026-01-10T22:04:25.190214",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 42,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 42 + 10 - 50) = 2"
+      }
+    },
+    {
+      "order_id": "c9a537ea-f257-421e-9889-4c4b2d160d43",
+      "order_date": "2023-01-23",
+      "supplier_id": "SUP006",
+      "supplier_name": "Mack-Bowman",
+      "sku_id": "SKU000374",
+      "product_name": "Direction Grocery Basic",
+      "demand": 45,
+      "available_stock": 50,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 5,
+      "order_quantity": 24,
+      "pack_size": 6,
+      "unit_price": 9.54,
+      "total_price": 228.95999999999998,
+      "lead_time_days": 1,
+      "calculated_at": "2026-01-10T22:04:25.192544",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 45,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 45 + 10 - 50) = 5"
+      }
+    },
+    {
+      "order_id": "987a643f-18de-45fe-acc2-f536708be97b",
+      "order_date": "2023-01-23",
+      "supplier_id": "SUP006",
+      "supplier_name": "Mack-Bowman",
+      "sku_id": "SKU000437",
+      "product_name": "Part Cleaning Organic",
+      "demand": 45,
+      "available_stock": 50,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 5,
+      "order_quantity": 6,
+      "pack_size": 6,
+      "unit_price": 3.17,
+      "total_price": 19.02,
+      "lead_time_days": 1,
+      "calculated_at": "2026-01-10T22:04:25.200185",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 45,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 45 + 10 - 50) = 5"
+      }
+    }
+  ]
+}

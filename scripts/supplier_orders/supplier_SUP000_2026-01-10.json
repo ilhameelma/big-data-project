@@ -1,0 +1,88 @@
+{
+  "supplier_id": "SUP000",
+  "supplier_name": "Nichols-Horton",
+  "order_date": "2026-01-10",
+  "total_items": 3,
+  "total_value": 317.64,
+  "generated_at": "2026-01-10T19:59:03.336876",
+  "items": [
+    {
+      "order_id": "4d02691e-c4df-41e3-b144-f34cddcaf26f",
+      "order_date": "2026-01-10",
+      "supplier_id": "SUP000",
+      "supplier_name": "Nichols-Horton",
+      "sku_id": "SKU000080",
+      "product_name": "Firm Grocery Pro",
+      "demand": 51,
+      "available_stock": 50,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 11,
+      "order_quantity": 12,
+      "pack_size": 12,
+      "unit_price": 14.43,
+      "total_price": 173.16,
+      "lead_time_days": 6,
+      "calculated_at": "2026-01-10T19:59:02.954463",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 51,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 51 + 10 - 50) = 11"
+      }
+    },
+    {
+      "order_id": "40da13f9-7fa0-4f1b-ade3-404abeffd379",
+      "order_date": "2026-01-10",
+      "supplier_id": "SUP000",
+      "supplier_name": "Nichols-Horton",
+      "sku_id": "SKU000426",
+      "product_name": "Leg Beverages Basic",
+      "demand": 42,
+      "available_stock": 50,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 2,
+      "order_quantity": 12,
+      "pack_size": 12,
+      "unit_price": 2.56,
+      "total_price": 30.72,
+      "lead_time_days": 6,
+      "calculated_at": "2026-01-10T19:59:03.225923",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 42,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 42 + 10 - 50) = 2"
+      }
+    },
+    {
+      "order_id": "1f3dff6e-08fb-4cd3-b091-40c046cdf274",
+      "order_date": "2026-01-10",
+      "supplier_id": "SUP000",
+      "supplier_name": "Nichols-Horton",
+      "sku_id": "SKU000464",
+      "product_name": "Simple Cleaning Basic",
+      "demand": 52,
+      "available_stock": 50,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 12,
+      "order_quantity": 12,
+      "pack_size": 12,
+      "unit_price": 9.48,
+      "total_price": 113.76,
+      "lead_time_days": 1,
+      "calculated_at": "2026-01-10T19:59:03.255376",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 52,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 52 + 10 - 50) = 12"
+      }
+    }
+  ]
+}

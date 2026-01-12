@@ -4,10 +4,10 @@
   "order_date": "2025-01-18",
   "total_items": 3,
   "total_value": 773.88,
-  "generated_at": "2026-01-08T15:53:23.888647",
+  "generated_at": "2026-01-08T20:05:51.369994",
   "items": [
     {
-      "order_id": "0110f710-0d60-44a3-9e96-0515f932d497",
+      "order_id": "74b97894-5080-42dc-aca1-ba2ec2eaabda",
       "order_date": "2025-01-18",
       "supplier_id": "SUP012",
       "supplier_name": "Leonard, Ward and Huff",
@@ -23,7 +23,7 @@
       "unit_price": 18.04,
       "total_price": 180.39999999999998,
       "lead_time_days": 5,
-      "calculated_at": "2026-01-08T15:53:23.720651",
+      "calculated_at": "2026-01-08T20:05:51.202234",
       "calculation_details": {
         "formula": "max(0, demand + safety_stock - available_stock)",
         "demand": 41,
@@ -33,7 +33,7 @@
       }
     },
     {
-      "order_id": "51e12a75-8be6-4f5c-b1cb-b34f66c5a3ef",
+      "order_id": "591b73d4-8b6e-4c77-9f14-bb51c5077dd6",
       "order_date": "2025-01-18",
       "supplier_id": "SUP012",
       "supplier_name": "Leonard, Ward and Huff",
@@ -49,7 +49,7 @@
       "unit_price": 19.52,
       "total_price": 468.48,
       "lead_time_days": 1,
-      "calculated_at": "2026-01-08T15:53:23.790921",
+      "calculated_at": "2026-01-08T20:05:51.273443",
       "calculation_details": {
         "formula": "max(0, demand + safety_stock - available_stock)",
         "demand": 41,
@@ -59,7 +59,7 @@
       }
     },
     {
-      "order_id": "1a3fbff3-40bc-44c4-b691-18dbbf1e9382",
+      "order_id": "cb5d781a-e56f-4f0e-a7a6-580a6931cf2e",
       "order_date": "2025-01-18",
       "supplier_id": "SUP012",
       "supplier_name": "Leonard, Ward and Huff",
@@ -75,7 +75,7 @@
       "unit_price": 12.5,
       "total_price": 125.0,
       "lead_time_days": 6,
-      "calculated_at": "2026-01-08T15:53:23.794368",
+      "calculated_at": "2026-01-08T20:05:51.276998",
       "calculation_details": {
         "formula": "max(0, demand + safety_stock - available_stock)",
         "demand": 43,

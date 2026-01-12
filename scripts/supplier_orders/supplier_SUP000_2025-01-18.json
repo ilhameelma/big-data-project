@@ -4,10 +4,10 @@
   "order_date": "2025-01-18",
   "total_items": 3,
   "total_value": 317.64,
-  "generated_at": "2026-01-08T15:53:23.860088",
+  "generated_at": "2026-01-08T20:05:51.347100",
   "items": [
     {
-      "order_id": "0771d752-82e6-4560-9260-df37ed1e250c",
+      "order_id": "84614ce4-f9fa-4a36-a665-6997ce4a3c4f",
       "order_date": "2025-01-18",
       "supplier_id": "SUP000",
       "supplier_name": "Nichols-Horton",
@@ -23,7 +23,7 @@
       "unit_price": 14.43,
       "total_price": 173.16,
       "lead_time_days": 6,
-      "calculated_at": "2026-01-08T15:53:23.683859",
+      "calculated_at": "2026-01-08T20:05:51.170739",
       "calculation_details": {
         "formula": "max(0, demand + safety_stock - available_stock)",
         "demand": 51,
@@ -33,7 +33,7 @@
       }
     },
     {
-      "order_id": "11443fdb-da2f-4654-8e4c-fcc4375be599",
+      "order_id": "85b5a0a0-76a0-4c67-ac9c-c3d601af3b16",
       "order_date": "2025-01-18",
       "supplier_id": "SUP000",
       "supplier_name": "Nichols-Horton",
@@ -49,7 +49,7 @@
       "unit_price": 2.56,
       "total_price": 30.72,
       "lead_time_days": 6,
-      "calculated_at": "2026-01-08T15:53:23.792736",
+      "calculated_at": "2026-01-08T20:05:51.275462",
       "calculation_details": {
         "formula": "max(0, demand + safety_stock - available_stock)",
         "demand": 42,
@@ -59,7 +59,7 @@
       }
     },
     {
-      "order_id": "7c062a0d-d749-4571-834a-4d7b3f70676f",
+      "order_id": "5b165533-71fa-4bb6-9a13-131435ce5967",
       "order_date": "2025-01-18",
       "supplier_id": "SUP000",
       "supplier_name": "Nichols-Horton",
@@ -75,7 +75,7 @@
       "unit_price": 9.48,
       "total_price": 113.76,
       "lead_time_days": 1,
-      "calculated_at": "2026-01-08T15:53:23.803048",
+      "calculated_at": "2026-01-08T20:05:51.286554",
       "calculation_details": {
         "formula": "max(0, demand + safety_stock - available_stock)",
         "demand": 52,

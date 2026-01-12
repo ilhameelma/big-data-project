@@ -4,10 +4,10 @@
   "order_date": "2025-01-18",
   "total_items": 3,
   "total_value": 785.4,
-  "generated_at": "2026-01-08T15:53:23.823132",
+  "generated_at": "2026-01-08T20:05:51.308697",
   "items": [
     {
-      "order_id": "3d62f9af-93b9-4dad-ad96-4702521de19f",
+      "order_id": "bbc004eb-d58e-4d9e-8530-8cbb0fdb7c12",
       "order_date": "2025-01-18",
       "supplier_id": "SUP015",
       "supplier_name": "English-Hanna",
@@ -23,7 +23,7 @@
       "unit_price": 19.04,
       "total_price": 456.96,
       "lead_time_days": 1,
-      "calculated_at": "2026-01-08T15:53:23.659740",
+      "calculated_at": "2026-01-08T20:05:51.149561",
       "calculation_details": {
         "formula": "max(0, demand + safety_stock - available_stock)",
         "demand": 57,
@@ -33,7 +33,7 @@
       }
     },
     {
-      "order_id": "c105b9dc-4b0d-472b-89b1-6f14ed2b5a2a",
+      "order_id": "6da6c40b-6afd-47fc-9b0b-1ff3dbac2314",
       "order_date": "2025-01-18",
       "supplier_id": "SUP015",
       "supplier_name": "English-Hanna",
@@ -49,7 +49,7 @@
       "unit_price": 10.9,
       "total_price": 130.8,
       "lead_time_days": 5,
-      "calculated_at": "2026-01-08T15:53:23.721695",
+      "calculated_at": "2026-01-08T20:05:51.203409",
       "calculation_details": {
         "formula": "max(0, demand + safety_stock - available_stock)",
         "demand": 51,
@@ -59,7 +59,7 @@
       }
     },
     {
-      "order_id": "3a84ef03-f103-4aba-9306-c177e1d0c180",
+      "order_id": "ff084a8d-10ef-408b-b183-07605fb167c8",
       "order_date": "2025-01-18",
       "supplier_id": "SUP015",
       "supplier_name": "English-Hanna",
@@ -75,7 +75,7 @@
       "unit_price": 16.47,
       "total_price": 197.64,
       "lead_time_days": 4,
-      "calculated_at": "2026-01-08T15:53:23.739042",
+      "calculated_at": "2026-01-08T20:05:51.221682",
       "calculation_details": {
         "formula": "max(0, demand + safety_stock - available_stock)",
         "demand": 45,

@@ -1,22 +1,223 @@
 #!/usr/bin/env python3
 """
-Pipeline corrigé - Gestion du format JSONL de Trino
-Avec affichage détaillé des calculs de demande nette
+PIPELINE COMPLET - Version finale corrigée
+Gère l'upload dans HDFS et le traitement des commandes
 """
 
+import os
 import subprocess
 import json
 import csv
 import uuid
-from datetime import datetime, date, timedelta
-import os
+import argparse
+from datetime import datetime, timedelta
 from pathlib import Path
 
+class Config:
+    """Configuration globale"""
+    BASE_LOCAL_DATA = os.path.abspath("../data")
+    HDFS_RAW_ORDERS = "/raw/orders"
+    HDFS_RAW_STOCK = "/raw/stock"
+    CONTAINER_TMP = "/tmp/data_today"
+    OUTPUT_DIR = Path("./supplier_orders")
+    OUTPUT_DIR.mkdir(exist_ok=True)
+    
+    @staticmethod
+    def get_today():
+        """Retourne la date du jour au format YYYY-MM-DD"""
+        return datetime.now().strftime("%Y-%m-%d")
+
+class HDFSUploader:
+    """Gère l'upload des fichiers vers HDFS"""
+    
+    def __init__(self, target_date=None):
+        self.target_date = target_date or Config.get_today()
+        self.copied_files = []
+    
+    def run_cmd(self, cmd):
+        """Exécute une commande"""
+        print(f"→ {cmd}")
+        result = subprocess.run(cmd, shell=True, capture_output=True, text=True)
+        
+        if result.returncode != 0:
+            error_msg = result.stderr.strip()[:300]
+            # Ignorer les avertissements SASL
+            if "SASL" in error_msg and "trust check" in error_msg:
+                print(f"  Avertissement SASL (normal)")
+            elif "No such file or directory" in error_msg and "find" in cmd:
+                # Ignorer les erreurs find pour les dossiers vides
+                print(f"  Aucun fichier trouvé (normal si premier upload)")
+            else:
+                print(f" Erreur: {error_msg}")
+        elif result.stdout.strip():
+            print(f" Sortie: {result.stdout.strip()[:200]}")
+        
+        return result
+    
+    def copy_to_container(self):
+        """Copie les données vers le conteneur"""
+        print(f"\n Copie vers le conteneur pour {self.target_date}...")
+        
+        local_orders = os.path.join(Config.BASE_LOCAL_DATA, "raw_orders", f"date={self.target_date}")
+        
+        if not os.path.exists(local_orders):
+            print(f" Dossier non trouvé: {local_orders}")
+            return []
+        
+        # Nettoyer le répertoire temporaire
+        self.run_cmd(f"docker-compose exec namenode rm -rf {Config.CONTAINER_TMP}")
+        self.run_cmd(f"docker-compose exec namenode mkdir -p {Config.CONTAINER_TMP}")
+        
+        # Lister tous les dossiers store_id
+        store_dirs = [d for d in os.listdir(local_orders) 
+                     if os.path.isdir(os.path.join(local_orders, d)) and d.startswith("store_id=")]
+        
+        print(f" {len(store_dirs)} dossiers store_id à copier")
+        
+        self.copied_files = []
+        
+        for store_dir in store_dirs:
+            store_id = store_dir.split("=")[1]
+            local_file = os.path.join(local_orders, store_dir, "orders.json")
+            
+            if os.path.exists(local_file):
+                # Créer le répertoire dans le conteneur
+                container_dir = f"{Config.CONTAINER_TMP}/raw_orders/date={self.target_date}/{store_dir}/"
+                self.run_cmd(f"docker-compose exec namenode mkdir -p {container_dir}")
+                
+                # Copier le fichier
+                container_file = f"{container_dir}orders.json"
+                result = self.run_cmd(f'docker cp "{local_file}" namenode:{container_file}')
+                
+                if result.returncode == 0:
+                    file_size = os.path.getsize(local_file)
+                    print(f"   {store_id}: {file_size:,} bytes")
+                    self.copied_files.append({
+                        'store_id': store_id,
+                        'container_path': container_file,
+                        'size': file_size
+                    })
+                else:
+                    print(f"   {store_id}: échec copie")
+        
+        # Vérifier ce qui a été copié
+        print(f"\n Vérification fichiers copiés:")
+        self.run_cmd(f"docker-compose exec namenode ls -la {Config.CONTAINER_TMP}/raw_orders/date={self.target_date}/ 2>/dev/null || echo 'Répertoire vide'")
+        
+        return self.copied_files
+    
+    def upload_to_hdfs(self):
+        """Upload vers HDFS"""
+        print(f"\n Upload vers HDFS pour {self.target_date}...")
+        
+        if not self.copied_files:
+            print(" Aucun fichier à uploader")
+            return False
+        
+        success_count = 0
+        
+        for file_info in self.copied_files:
+            store_id = file_info['store_id']
+            source_file = file_info['container_path']
+            
+            # Chemin HDFS
+            hdfs_dir = f"{Config.HDFS_RAW_ORDERS}/date={self.target_date}/store_id={store_id}/"
+            hdfs_file = f"{hdfs_dir}orders.json"
+            
+            print(f"\n   Traitement store_id={store_id}")
+            print(f"    Source: {source_file}")
+            print(f"    Destination: {hdfs_file}")
+            
+            # Créer le répertoire HDFS
+            mkdir_result = self.run_cmd(f"docker-compose exec namenode hdfs dfs -mkdir -p {hdfs_dir}")
+            
+            if mkdir_result.returncode != 0:
+                print(f"     Impossible de créer {hdfs_dir}")
+                continue
+            
+            # Upload le fichier
+            upload_result = self.run_cmd(f"docker-compose exec namenode hdfs dfs -copyFromLocal {source_file} {hdfs_file}")
+            
+            if upload_result.returncode == 0:
+                success_count += 1
+                print(f"     Upload réussi")
+                
+                # Vérification rapide
+                self.run_cmd(f"docker-compose exec namenode hdfs dfs -test -e {hdfs_file} && echo '    ✅ Fichier présent dans HDFS' || echo '    ❌ Fichier absent'")
+            else:
+                print(f"     Échec upload")
+        
+        print(f"\n📊 Résultat: {success_count}/{len(self.copied_files)} fichiers uploadés")
+        return success_count > 0
+    
+    def verify_hdfs_upload(self):
+        """Vérification de l'upload HDFS"""
+        print(f"\n Vérification HDFS pour {self.target_date}...")
+        
+        # Vérifier le répertoire date
+        self.run_cmd(f"docker-compose exec namenode hdfs dfs -test -d {Config.HDFS_RAW_ORDERS}/date={self.target_date} && echo '✅ Répertoire date présent' || echo '❌ Répertoire date absent'")
+        
+        # Lister les fichiers
+        print(f"\n Fichiers dans HDFS:")
+        self.run_cmd(f"docker-compose exec namenode hdfs dfs -ls -R {Config.HDFS_RAW_ORDERS}/date={self.target_date} 2>/dev/null || echo 'Aucun fichier pour cette date'")
+        
+        # Compter
+        print(f"\n Nombre de fichiers:")
+        self.run_cmd(f"docker-compose exec namenode hdfs dfs -ls {Config.HDFS_RAW_ORDERS}/date={self.target_date} 2>/dev/null | grep -c '^' || echo '0'")
+        
+        return True
+    
+    def sync_hive_partitions(self):
+        """Synchronise les partitions Hive"""
+        print("\n Synchronisation Hive...")
+        
+        self.run_cmd('docker-compose exec trino trino --execute "CALL hive.system.sync_partition_metadata(\'procurement\', \'orders_raw\', \'FULL\')"')
+        self.run_cmd('docker-compose exec trino trino --execute "CALL hive.system.sync_partition_metadata(\'procurement\', \'stock_raw\', \'FULL\')"')
+        
+        print(" Synchronisation terminée")
+        return True
+    
+    def run_upload_pipeline(self):
+        """Exécute le pipeline complet d'upload"""
+        print(f"\n{'='*80}")
+        print(f"HDFS UPLOAD PIPELINE")
+        print(f"Date: {self.target_date}")
+        print(f"{'='*80}")
+        
+        try:
+            # 1. Copie vers le conteneur
+            copied = self.copy_to_container()
+            if not copied:
+                print(" Aucun fichier à copier")
+                return False
+            
+            # 2. Upload vers HDFS
+            uploaded = self.upload_to_hdfs()
+            if not uploaded:
+                print(" Échec de l'upload")
+                return False
+            
+            # 3. Vérification
+            self.verify_hdfs_upload()
+            
+            # 4. Synchronisation Hive
+            self.sync_hive_partitions()
+            
+            print(f"\n Upload HDFS terminé avec succès")
+            return True
+            
+        except Exception as e:
+            print(f" Erreur lors de l'upload: {e}")
+            import traceback
+            traceback.print_exc()
+            return False
+
 class ProcurementGenerator:
+    """Génère les commandes fournisseurs"""
+    
     def __init__(self, target_date='2025-12-02'):
         self.target_date = target_date
-        self.output_dir = Path("./supplier_orders")
-        self.output_dir.mkdir(exist_ok=True)
+        self.output_dir = Config.OUTPUT_DIR
         
     def run_trino_query_jsonl(self, query):
         """Exécute une requête Trino et parse le JSONL"""
@@ -46,16 +247,6 @@ class ProcurementGenerator:
             print(f"Erreur: {e}")
             return []
     
-    def run_trino_query_text(self, query):
-        """Exécute une requête Trino en format texte"""
-        cmd = ['docker-compose', 'exec', '-T', 'trino', 'trino', '--execute', query]
-        
-        try:
-            result = subprocess.run(cmd, capture_output=True, text=True, check=True, timeout=30)
-            return result.stdout.strip()
-        except:
-            return ""
-    
     def get_aggregated_demand(self):
         """Récupère la demande agrégée"""
         print(f"1. Calcul de la demande pour {self.target_date}...")
@@ -74,7 +265,7 @@ class ProcurementGenerator:
         """
         
         data = self.run_trino_query_jsonl(query)
-        print(f"   ✅ {len(data)} SKU avec demande")
+        print(f"    {len(data)} SKU avec demande")
         
         if data:
             print(f"   Exemple: {data[0].get('sku_id')} - {data[0].get('total_demand')} unités")
@@ -82,42 +273,22 @@ class ProcurementGenerator:
         return data
     
     def get_stock_data(self):
-        """Récupère les données de stock (format corrigé)"""
+        """Récupère les données de stock"""
         print(f"2. Récupération du stock pour {self.target_date}...")
-        
-        # ATTENTION: Les colonnes semblent décalées dans stock_raw
-        # sku_id contient la date, available_stock contient warehouse_id, etc.
-        # Essayons une requête différente
         
         query = f"""
         SELECT 
-            TRY_CAST(reserved_stock AS VARCHAR) as sku_id,
-            TRY_CAST(safety_stock AS VARCHAR) as available_stock,
-            '0' as reserved_stock,
-            '10' as safety_stock  -- Valeur par défaut
+            sku_id,
+            CAST(available_stock AS INTEGER) as available_stock,
+            CAST(reserved_stock AS INTEGER) as reserved_stock,
+            CAST(safety_stock AS INTEGER) as safety_stock
         FROM hive.procurement.stock_raw 
         WHERE date = '{self.target_date}'
-        AND reserved_stock LIKE 'SKU%'
-        LIMIT 100
+        AND sku_id IS NOT NULL
         """
         
         data = self.run_trino_query_jsonl(query)
-        
-        if not data:
-            # Essayer un autre format
-            query = f"""
-            SELECT DISTINCT
-                TRY_CAST(available_stock AS VARCHAR) as warehouse_id,
-                TRY_CAST(reserved_stock AS VARCHAR) as sku_id,
-                TRY_CAST(safety_stock AS VARCHAR) as stock_value
-            FROM hive.procurement.stock_raw 
-            WHERE date = '{self.target_date}'
-            AND reserved_stock LIKE 'SKU%'
-            LIMIT 50
-            """
-            data = self.run_trino_query_jsonl(query)
-        
-        print(f"   ✅ {len(data)} éléments de stock trouvés")
+        print(f"    {len(data)} éléments de stock trouvés")
         
         if data:
             print(f"   Exemple: SKU={data[0].get('sku_id')}, Stock={data[0].get('available_stock')}")
@@ -142,11 +313,10 @@ class ProcurementGenerator:
         JOIN postgresql.public.product_supplier ps ON p.sku_id = ps.sku_id AND ps.is_primary = true
         JOIN postgresql.public.suppliers s ON ps.supplier_id = s.supplier_id
         WHERE p.sku_id IS NOT NULL
-        LIMIT 500
         """
         
         data = self.run_trino_query_jsonl(query)
-        print(f"   ✅ {len(data)} produits avec fournisseurs")
+        print(f"    {len(data)} produits avec fournisseurs")
         
         if data:
             print(f"   Exemple: {data[0].get('sku_id')} - {data[0].get('product_name')[:20]}...")
@@ -174,7 +344,7 @@ class ProcurementGenerator:
         stock_dict = {}
         for item in stock_data:
             sku = item.get('sku_id')
-            if sku and sku.startswith('SKU'):
+            if sku:
                 try:
                     stock_dict[sku] = {
                         'available_stock': int(float(item.get('available_stock', 50))),
@@ -218,7 +388,6 @@ class ProcurementGenerator:
             })
             
             # CALCUL DE LA DEMANDE NETTE
-            # Formule: net_demand = max(0, demand + safety_stock - available_stock)
             available = stock['available_stock'] - stock['reserved_stock']
             net_demand = max(0, demand + stock['safety_stock'] - available)
             
@@ -260,7 +429,6 @@ class ProcurementGenerator:
                     'total_price': unit_price * order_quantity,
                     'lead_time_days': int(product.get('lead_time_days', 7)),
                     'calculated_at': datetime.now().isoformat(),
-                    # Ajouter les détails du calcul pour le debug
                     'calculation_details': {
                         'formula': 'max(0, demand + safety_stock - available_stock)',
                         'demand': demand,
@@ -280,34 +448,24 @@ class ProcurementGenerator:
         
         print("   └──────────────┴──────────┴──────────────┴──────────────┴──────────────┴──────────────┘")
         
-        # Afficher un résumé des calculs
         print("\n   ──────────────────────────────────────────────────────────")
         print("   RÉSUMÉ DES CALCULS :")
         print(f"   • {orders_count} SKU nécessitent une commande")
         print(f"   • {no_order_count} SKU n'ont pas besoin de commande (stock suffisant)")
         
-        if orders_count > 0:
+        if orders_count > 0 and len(orders) > 0:
             print("\n   EXEMPLES DE CALCULS DÉTAILLÉS :")
             print("   ──────────────────────────────────────────────────────────")
             
-            # Afficher quelques exemples détaillés
             for i, order in enumerate(orders[:3]):  # Juste les 3 premiers
                 details = order['calculation_details']
                 print(f"   Exemple {i+1} - {order['sku_id']}:")
                 print(f"     Formule : {details['formula']}")
                 print(f"     Calcul  : {details['calculation']}")
                 print(f"     Détail  : Demande({details['demand']}) + Sécurité({details['safety_stock']}) - Disponible({details['available_stock']}) = {order['net_demand']}")
-                
-                # Règles métier appliquées
-                if order['net_demand'] > 0:
-                    print(f"     Règles métier appliquées :")
-                    print(f"       • Taille de pack : {order['pack_size']} unités")
-                    print(f"       • Packs nécessaires : {order['order_quantity'] // order['pack_size']} packs")
-                    print(f"       • Quantité commandée : {order['order_quantity']} unités")
-                    print(f"       • Valeur : {order['total_price']:.2f}€")
                 print()
         
-        print(f"   ✅ {len(orders)} articles à commander")
+        print(f"    {len(orders)} articles à commander")
         return orders
     
     def generate_supplier_files(self, orders):
@@ -315,8 +473,8 @@ class ProcurementGenerator:
         print("5. Génération des fichiers fournisseurs...")
         
         if not orders:
-            print("   ⚠️  Aucune commande à générer")
-            return
+            print("     Aucune commande à générer")
+            return 0
         
         # Regrouper par fournisseur
         suppliers = {}
@@ -372,67 +530,175 @@ class ProcurementGenerator:
                 
                 files_generated += 2
                 total_value = sum(o['total_price'] for o in data['orders'])
-                print(f"   ✅ {supplier_id}: {len(data['orders'])} articles, {total_value:.2f}€")
+                print(f"    {supplier_id}: {len(data['orders'])} articles, {total_value:.2f}€")
                 
             except Exception as e:
-                print(f"   ❌ Erreur pour {supplier_id}: {e}")
+                print(f"    Erreur pour {supplier_id}: {e}")
         
         return files_generated
-    
+    def verify_cassandra_storage(self):
+        """Vérifie que les données ont bien été stockées dans Cassandra"""
+        print("\n    Vérification du stockage Cassandra...")
+        
+        try:
+            # Compter le nombre d'enregistrements pour cette date
+            query = f"SELECT COUNT(*) FROM procurement.supplier_orders WHERE order_date = '{self.target_date}';"
+            cmd = ['docker-compose', 'exec', '-T', 'cassandra', 'cqlsh', '-e', query]
+            result = subprocess.run(cmd, capture_output=True, text=True, check=False, timeout=10)
+            
+            if result.returncode == 0:
+                print(f"    📊 {result.stdout.strip()} commandes trouvées pour {self.target_date}")
+            else:
+                print(f"    ⚠️  Impossible de vérifier: {result.stderr[:100]}")
+                
+        except Exception as e:
+            print(f"    ⚠️  Erreur lors de la vérification: {e}")
+    def store_demand_calculations(self, orders, demand_data, stock_data):
+        """Stocke les calculs de demande dans Cassandra"""
+        print("\n7. Stockage des calculs de demande...")
+        
+        stored_count = 0
+        error_count = 0
+        
+        # Créer des dictionnaires pour un accès rapide
+        demand_dict = {}
+        for item in demand_data:
+            sku = item.get('sku_id')
+            if sku:
+                demand_dict[sku] = int(item.get('total_demand', 0))
+        
+        stock_dict = {}
+        for item in stock_data:
+            sku = item.get('sku_id')
+            if sku:
+                try:
+                    stock_dict[sku] = {
+                        'available_stock': int(float(item.get('available_stock', 50))),
+                        'safety_stock': int(float(item.get('safety_stock', 10)))
+                    }
+                except:
+                    stock_dict[sku] = {
+                        'available_stock': 50,
+                        'safety_stock': 10
+                    }
+        
+        orders_dict = {}
+        for order in orders:
+            sku = order['sku_id']
+            orders_dict[sku] = order['order_quantity']
+        
+        # Pour stocker tous les SKU avec demande
+        skus_to_store = list(demand_dict.keys())
+        
+        print(f"    Stockage des calculs pour {len(skus_to_store)} SKU...")
+        
+        for i, sku_id in enumerate(skus_to_store[:200], 1):  # Limiter aux 200 premiers
+            try:
+                demand = demand_dict.get(sku_id, 0)
+                
+                # Récupérer les données de stock
+                stock_info = stock_dict.get(sku_id, {
+                    'available_stock': 50,
+                    'safety_stock': 10
+                })
+                available_stock = stock_info['available_stock']
+                safety_stock = stock_info['safety_stock']
+                
+                # Calculer la demande nette
+                net_demand = max(0, demand + safety_stock - available_stock)
+                
+                # Récupérer la quantité commandée (si applicable)
+                final_order_quantity = orders_dict.get(sku_id, 0)
+                
+                # Échapper les guillemets
+                safe_sku_id = sku_id.replace("'", "''")
+                
+                query = (
+                    f"INSERT INTO procurement.demand_calculations "
+                    f"(calculation_date, sku_id, total_demand, available_stock, net_demand, "
+                    f"final_order_quantity, calculated_at) "
+                    f"VALUES ('{self.target_date}', '{safe_sku_id}', {demand}, {available_stock}, "
+                    f"{net_demand}, {final_order_quantity}, toTimestamp(now()));"
+                )
+                
+                # Exécuter la commande
+                cmd = ['docker-compose', 'exec', '-T', 'cassandra', 'cqlsh', '-e', query]
+                result = subprocess.run(cmd, capture_output=True, text=True, check=False, timeout=5)
+                
+                if result.returncode == 0:
+                    stored_count += 1
+                    if i <= 3:  # Afficher les 3 premiers
+                        print(f"    {i:3d}. ✓ {sku_id}: dmd={demand}, stk={available_stock}, net={net_demand}")
+                    elif i % 20 == 0:  # Afficher la progression
+                        print(f"    Progression: {i}/{len(skus_to_store)}")
+                else:
+                    error_count += 1
+                    if error_count <= 3:
+                        print(f"    {i:3d}. ✗ {sku_id}")
+                        
+            except Exception as e:
+                error_count += 1
+        
+        print(f"\n    Résumé calculs: {stored_count} calculs stockés, {error_count} erreurs")
     def store_in_cassandra(self, orders):
         """Stocke les résultats dans Cassandra"""
         print("6. Stockage dans Cassandra...")
         
         if not orders:
+            print("    Aucune commande à stocker")
             return
         
-        # Insérer les commandes
-        for order in orders[:10]:  # Limiter pour le test
+        stored_count = 0
+        error_count = 0
+        
+        for i, order in enumerate(orders, 1):
             try:
-                query = f"""
-                INSERT INTO procurement.supplier_orders (
-                    order_date, supplier_id, order_id, sku_id,
-                    quantity, status, generated_at
-                ) VALUES (
-                    '{self.target_date}', '{order['supplier_id']}', {order['order_id']}, '{order['sku_id']}',
-                    {order['order_quantity']}, 'GENERATED', toTimestamp(now())
-                );
-                """
+                # Utiliser uuid() de Cassandra pour générer l'ID
+                # Échapper les guillemets simples dans les chaînes
+                supplier_id = order['supplier_id'].replace("'", "''")
+                sku_id = order['sku_id'].replace("'", "''")
                 
+                query = (
+                    f"INSERT INTO procurement.supplier_orders "
+                    f"(order_date, supplier_id, order_id, sku_id, quantity, status, generated_at) "
+                    f"VALUES ('{self.target_date}', '{supplier_id}', "
+                    f"uuid(), '{sku_id}', "
+                    f"{order['order_quantity']}, 'GENERATED', toTimestamp(now()));"
+                )
+                
+                # Afficher un exemple de requête
+                if i == 1:
+                    print(f"    Exemple de requête: {query[:150]}...")
+                
+                # Exécuter la commande
                 cmd = ['docker-compose', 'exec', '-T', 'cassandra', 'cqlsh', '-e', query]
-                subprocess.run(cmd, capture_output=True, text=True, check=False)
+                result = subprocess.run(cmd, capture_output=True, text=True, check=False, timeout=5)
                 
+                if result.returncode == 0:
+                    stored_count += 1
+                    if stored_count % 10 == 0:  # Afficher la progression
+                        print(f"    Progression: {stored_count}/{len(orders)}")
+                else:
+                    error_count += 1
+                    if error_count <= 3:  # Afficher les 3 premières erreurs
+                        print(f"    {i:3d}. ✗ {order['sku_id']}")
+                        if result.stderr:
+                            error_msg = result.stderr[:100]
+                            print(f"        Erreur: {error_msg}")
+                        
             except Exception as e:
-                print(f"   ⚠️  Erreur Cassandra: {e}")
+                error_count += 1
+                print(f"    {i:3d}. ❌ Exception: {str(e)[:50]}")
         
-        print(f"   ✅ {min(10, len(orders))} commandes stockées dans Cassandra")
+        print(f"\n    Résumé: {stored_count} commandes stockées, {error_count} erreurs")
         
-        # Stocker aussi les calculs détaillés
-        print("7. Stockage des calculs détaillés dans Cassandra...")
-        for order in orders[:5]:  # Stocker les calculs pour les 5 premières commandes
-            try:
-                details_query = f"""
-                INSERT INTO procurement.demand_calculations (
-                    calculation_date, sku_id, total_demand, available_stock,
-                    net_demand, final_order_quantity, calculated_at, calculation_formula
-                ) VALUES (
-                    '{self.target_date}', '{order['sku_id']}', {order['demand']}, {order['available_stock']},
-                    {order['net_demand']}, {order['order_quantity']}, toTimestamp(now()),
-                    'max(0, demand + safety_stock - available_stock)'
-                );
-                """
-                
-                cmd = ['docker-compose', 'exec', '-T', 'cassandra', 'cqlsh', '-e', details_query]
-                subprocess.run(cmd, capture_output=True, text=True, check=False)
-                print(f"   📝 Calculs stockés pour {order['sku_id']}")
-                
-            except Exception as e:
-                print(f"   ⚠️  Erreur stockage calculs: {e}")
+        # Vérifier le résultat
+
     
-    def run(self):
-        """Exécute le pipeline complet"""
+    def run_processing_pipeline(self):
+        """Exécute le pipeline complet de traitement"""
         print(f"\n{'='*80}")
-        print(f"PIPELINE DE GÉNÉRATION DE COMMANDES")
+        print(f"PROCESSING PIPELINE")
         print(f"Date: {self.target_date}")
         print(f"{'='*80}\n")
         
@@ -440,8 +706,8 @@ class ProcurementGenerator:
             # Étape 1: Demande
             demand_data = self.get_aggregated_demand()
             if not demand_data:
-                print("❌ Aucune demande trouvée")
-                return
+                print(" Aucune demande trouvée")
+                return False
             
             # Étape 2: Stock
             stock_data = self.get_stock_data()
@@ -449,113 +715,188 @@ class ProcurementGenerator:
             # Étape 3: Produits
             product_data = self.get_products_with_suppliers()
             if not product_data:
-                print("❌ Aucun produit trouvé")
-                return
+                print(" Aucun produit trouvé")
+                return False
             
             # Étape 4: Calcul
             orders = self.calculate_orders(demand_data, stock_data, product_data)
             
             if not orders:
                 print(f"\n{'='*60}")
-                print("ℹ️  AUCUNE COMMANDE NÉCESSAIRE")
+                print("  AUCUNE COMMANDE NÉCESSAIRE")
                 print("   Raison : Stock suffisant pour couvrir la demande + sécurité")
                 print(f"{'='*60}")
-                return
+                # Stocker quand même les calculs même sans commande
+                self.store_demand_calculations([], demand_data, stock_data)
+                return True
             
             # Étape 5: Génération fichiers
             files_count = self.generate_supplier_files(orders)
             
-            # Étape 6: Cassandra
+            # Étape 6: Stockage des commandes dans Cassandra
             self.store_in_cassandra(orders)
             
-            # Rapport final détaillé
+            # Étape 7: Stockage des calculs de demande
+            self.store_demand_calculations(orders, demand_data, stock_data)
+            
+            # Rapport final
             print(f"\n{'='*80}")
-            print("✅ PIPELINE TERMINÉ AVEC SUCCÈS")
+            print(" PROCESSING TERMINÉ AVEC SUCCÈS")
             print(f"{'='*80}")
             
             total_items = len(orders)
             total_value = sum(o['total_price'] for o in orders)
             supplier_count = len(set(o['supplier_id'] for o in orders))
             
-            print(f"\n📊 RÉSUMÉ DÉTAILLÉ:")
+            print(f"\n RÉSUMÉ DÉTAILLÉ:")
             print(f"   Commandes générées: {total_items}")
             print(f"   Fournisseurs concernés: {supplier_count}")
             print(f"   Valeur totale des commandes: {total_value:.2f}€")
-            print(f"   Fichiers générés: {files_count} (JSON + CSV par fournisseur)")
+            print(f"   Fichiers générés: {files_count}")
             
-            # Détails statistiques
+            # Statistiques
             if orders:
                 avg_order_value = total_value / total_items
                 avg_quantity = sum(o['order_quantity'] for o in orders) / total_items
-                print(f"\n📈 STATISTIQUES:")
+                print(f"\n STATISTIQUES:")
                 print(f"   Valeur moyenne par article: {avg_order_value:.2f}€")
                 print(f"   Quantité moyenne commandée: {avg_quantity:.1f} unités")
-                
-                # Top 3 des commandes les plus chères
-                sorted_orders = sorted(orders, key=lambda x: x['total_price'], reverse=True)
-                print(f"\n🏆 TOP 3 DES COMMANDES:")
-                for i, order in enumerate(sorted_orders[:3]):
-                    print(f"   {i+1}. {order['sku_id']} - {order['product_name'][:30]}...")
-                    print(f"      {order['order_quantity']} unités × {order['unit_price']:.2f}€ = {order['total_price']:.2f}€")
             
-            print(f"\n📁 Répertoire de sortie: {self.output_dir.absolute()}")
+            print(f"\n Répertoire de sortie: {self.output_dir.absolute()}")
             
-            # Lister les fichiers
-            files = list(self.output_dir.glob(f"*{self.target_date}*"))
-            if files:
-                print(f"\n📄 FICHIERS CRÉÉS:")
-                print(f"   {'Nom du fichier':<40} {'Taille':<10} {'Type':<8}")
-                print(f"   {'─'*40} {'─'*10} {'─'*8}")
-                for f in sorted(files):
-                    size_kb = f.stat().st_size / 1024
-                    file_type = "JSON" if f.suffix == '.json' else "CSV"
-                    print(f"   {f.name:<40} {size_kb:.1f} KB{'':<3} {file_type:<8}")
-            
-            print(f"\n📝 CONSULTER LES FICHIERS :")
-            print(f"   • Les fichiers CSV contiennent les commandes au format tabulaire")
-            print(f"   • Les fichiers JSON contiennent les détails complets avec les calculs")
-            print(f"   • Les calculs sont également stockés dans Cassandra")
+            return True
             
         except Exception as e:
             print(f"\n{'='*80}")
-            print(f"❌ ERREUR: {e}")
+            print(f" ERREUR: {e}")
             print(f"{'='*80}")
             import traceback
             traceback.print_exc()
+            return False
+
+class CompletePipeline:
+    """Pipeline complet qui combine upload et traitement"""
+    
+    def __init__(self, target_date=None):
+        self.target_date = target_date or Config.get_today()
+        self.uploader = HDFSUploader(self.target_date)
+        self.processor = ProcurementGenerator(self.target_date)
+        self.start_time = datetime.now()
+    
+    def run(self):
+        """Exécute le pipeline complet"""
+        print(f"\n{'='*100}")
+        print(f"PIPELINE COMPLET")
+        print(f"Date: {self.target_date}")
+        print(f"Temps de début: {self.start_time.strftime('%H:%M:%S')}")
+        print(f"{'='*100}")
+        
+        # ÉTAPE 1: Upload HDFS
+        print(f"\n{'='*80}")
+        print(f"ÉTAPE 1: UPLOAD VERS HDFS")
+        print(f"{'='*80}")
+        
+        upload_success = self.uploader.run_upload_pipeline()
+        if not upload_success:
+            print(" Échec de l'upload HDFS, arrêt du pipeline")
+            return False
+        
+        # Pause pour laisser Hive se synchroniser
+        import time
+        print("\n Attente de 5 secondes pour la synchronisation Hive...")
+        time.sleep(5)
+        
+        # ÉTAPE 2: Traitement des données
+        print(f"\n{'='*80}")
+        print(f"ÉTAPE 2: TRAITEMENT DES DONNÉES")
+        print(f"{'='*80}")
+        
+        processing_success = self.processor.run_processing_pipeline()
+        
+        # Rapport final
+        end_time = datetime.now()
+        duration = end_time - self.start_time
+        
+        print(f"\n{'='*100}")
+        print(f"RAPPORT FINAL DU PIPELINE")
+        print(f"{'='*100}")
+        print(f"Date traitée: {self.target_date}")
+        print(f"Début: {self.start_time.strftime('%H:%M:%S')}")
+        print(f"Fin: {end_time.strftime('%H:%M:%S')}")
+        print(f"Durée totale: {duration}")
+        print(f"Étape 1 (HDFS Upload): {' Succès' if upload_success else '❌ Échec'}")
+        print(f"Étape 2 (Traitement): {' Succès' if processing_success else '❌ Échec'}")
+        
+        if upload_success and processing_success:
+            print(f"\n🎉 PIPELINE COMPLET TERMINÉ AVEC SUCCÈS!")
+        else:
+            print(f"\n  PIPELINE TERMINÉ AVEC DES PROBLÈMES")
+        
+        print(f"{'='*100}")
+        
+        return upload_success and processing_success
 
 def main():
-    import argparse
-    
+    """Fonction principale"""
     parser = argparse.ArgumentParser(
-        description='Générer les commandes fournisseurs avec affichage détaillé des calculs',
+        description='Pipeline complet: Upload HDFS + Traitement des commandes fournisseurs',
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
-Exemples d'affichage des calculs :
-  Formule : Demande Nette = MAX(0, Demande Client + Stock Sécurité - Stock Disponible)
-  
-  Exemple de calcul :
-    SKU000213 : Demande(55) + Sécurité(10) - Disponible(70) = -5 → MAX(0, -5) = 0 → Pas de commande
-    SKU000368 : Demande(52) + Sécurité(10) - Disponible(40) = 22 → Commande de 22 unités
+Exemples d'utilisation:
+  python3 pipeline_complete.py --date 2026-01-08    # Traite une date spécifique
+  python3 pipeline_complete.py                       # Traite la date d'aujourd'hui
+  python3 pipeline_complete.py --upload-only        # Upload seulement
+  python3 pipeline_complete.py --process-only       # Traitement seulement
         """
     )
     
-    parser.add_argument('--date', default='2025-12-02', help='Date à traiter (format: YYYY-MM-DD)')
-    parser.add_argument('--test-stock', action='store_true', help='Tester la structure du stock')
-    parser.add_argument('--verbose', '-v', action='store_true', help='Afficher tous les calculs détaillés')
+    parser.add_argument('--date', 
+                       default=Config.get_today(),
+                       help=f'Date à traiter (format: YYYY-MM-DD, défaut: aujourd\'hui)')
+    
+    parser.add_argument('--upload-only',
+                       action='store_true',
+                       help='Exécuter seulement l\'upload HDFS')
+    
+    parser.add_argument('--process-only',
+                       action='store_true',
+                       help='Exécuter seulement le traitement des données')
+    
+    parser.add_argument('--test-stock',
+                       action='store_true',
+                       help='Tester la structure du stock')
+    
+    parser.add_argument('--verbose', '-v',
+                       action='store_true',
+                       help='Afficher plus de détails')
     
     args = parser.parse_args()
     
-    if args.test_stock:
-        # Tester spécifiquement la structure du stock
-        generator = ProcurementGenerator(args.date)
+    if args.upload_only:
+        # Upload HDFS seulement
+        uploader = HDFSUploader(args.date)
+        success = uploader.run_upload_pipeline()
+        exit(0 if success else 1)
+    
+    elif args.process_only:
+        # Traitement seulement
+        processor = ProcurementGenerator(args.date)
+        success = processor.run_processing_pipeline()
+        exit(0 if success else 1)
+    
+    elif args.test_stock:
+        # Tester la structure du stock
+        processor = ProcurementGenerator(args.date)
         
         print("Test de la structure du stock_raw...")
         
         # Voir les premières lignes brutes
         query = f"SELECT * FROM hive.procurement.stock_raw WHERE date = '{args.date}' LIMIT 5"
-        result = generator.run_trino_query_text(query)
+        cmd = ['docker-compose', 'exec', '-T', 'trino', 'trino', '--execute', query]
+        result = subprocess.run(cmd, capture_output=True, text=True, check=False)
+        
         print("Résultat brut:")
-        print(result)
+        print(result.stdout)
         
         # Essayer différentes colonnes
         queries = [
@@ -567,14 +908,17 @@ Exemples d'affichage des calculs :
         for name, query in queries:
             print(f"\n{name}:")
             print(query)
-            result = generator.run_trino_query_text(query)
-            print(result)
+            cmd = ['docker-compose', 'exec', '-T', 'trino', 'trino', '--execute', query]
+            result = subprocess.run(cmd, capture_output=True, text=True, check=False)
+            print(result.stdout)
         
         return
     
-    # Exécuter le pipeline normal
-    generator = ProcurementGenerator(args.date)
-    generator.run()
+    else:
+        # Pipeline complet
+        pipeline = CompletePipeline(args.date)
+        success = pipeline.run()
+        exit(0 if success else 1)
 
 if __name__ == "__main__":
     main()

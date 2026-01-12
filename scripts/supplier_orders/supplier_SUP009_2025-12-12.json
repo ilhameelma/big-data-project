@@ -1,0 +1,62 @@
+{
+  "supplier_id": "SUP009",
+  "supplier_name": "Williams, Sullivan and Mckinney",
+  "order_date": "2025-12-12",
+  "total_items": 2,
+  "total_value": 165.3,
+  "generated_at": "2026-01-10T22:05:24.064673",
+  "items": [
+    {
+      "order_id": "fed19626-e50d-4e9a-8dd5-1396236fb52c",
+      "order_date": "2025-12-12",
+      "supplier_id": "SUP009",
+      "supplier_name": "Williams, Sullivan and Mckinney",
+      "sku_id": "SKU000030",
+      "product_name": "Election Personal Care Organic",
+      "demand": 42,
+      "available_stock": 50,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 2,
+      "order_quantity": 6,
+      "pack_size": 6,
+      "unit_price": 17.97,
+      "total_price": 107.82,
+      "lead_time_days": 1,
+      "calculated_at": "2026-01-10T22:05:23.921790",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 42,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 42 + 10 - 50) = 2"
+      }
+    },
+    {
+      "order_id": "e6fbd88a-cd78-48fe-a331-7df9f4fb2065",
+      "order_date": "2025-12-12",
+      "supplier_id": "SUP009",
+      "supplier_name": "Williams, Sullivan and Mckinney",
+      "sku_id": "SKU000283",
+      "product_name": "Particularly Dairy Gold",
+      "demand": 43,
+      "available_stock": 50,
+      "reserved_stock": 0,
+      "safety_stock": 10,
+      "net_demand": 3,
+      "order_quantity": 12,
+      "pack_size": 12,
+      "unit_price": 4.79,
+      "total_price": 57.480000000000004,
+      "lead_time_days": 2,
+      "calculated_at": "2026-01-10T22:05:23.949760",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 43,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 43 + 10 - 50) = 3"
+      }
+    }
+  ]
+}

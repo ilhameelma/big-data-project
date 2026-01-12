@@ -4,10 +4,10 @@
   "order_date": "2025-01-18",
   "total_items": 5,
   "total_value": 799.24,
-  "generated_at": "2026-01-08T15:53:23.834233",
+  "generated_at": "2026-01-08T20:05:51.321269",
   "items": [
     {
-      "order_id": "90f598da-c9ad-49ed-b753-b66af729b77e",
+      "order_id": "f7022b51-eda8-483d-b07e-13e478c92876",
       "order_date": "2025-01-18",
       "supplier_id": "SUP003",
       "supplier_name": "Hernandez-Knight",
@@ -23,7 +23,7 @@
       "unit_price": 12.02,
       "total_price": 144.24,
       "lead_time_days": 5,
-      "calculated_at": "2026-01-08T15:53:23.671826",
+      "calculated_at": "2026-01-08T20:05:51.160331",
       "calculation_details": {
         "formula": "max(0, demand + safety_stock - available_stock)",
         "demand": 47,
@@ -33,7 +33,7 @@
       }
     },
     {
-      "order_id": "0b456102-836b-48ef-a2fc-7f3a7da49bd5",
+      "order_id": "94b4ea64-ff95-4f11-8042-93e4df5c8e57",
       "order_date": "2025-01-18",
       "supplier_id": "SUP003",
       "supplier_name": "Hernandez-Knight",
@@ -49,7 +49,7 @@
       "unit_price": 0.68,
       "total_price": 7.48,
       "lead_time_days": 6,
-      "calculated_at": "2026-01-08T15:53:23.675056",
+      "calculated_at": "2026-01-08T20:05:51.162707",
       "calculation_details": {
         "formula": "max(0, demand + safety_stock - available_stock)",
         "demand": 51,
@@ -59,7 +59,7 @@
       }
     },
     {
-      "order_id": "122b788e-4c2b-442b-8ced-e4c4176d8ec9",
+      "order_id": "f1c51695-cb23-4324-ae33-e5086a598ec2",
       "order_date": "2025-01-18",
       "supplier_id": "SUP003",
       "supplier_name": "Hernandez-Knight",
@@ -75,7 +75,7 @@
       "unit_price": 19.8,
       "total_price": 475.20000000000005,
       "lead_time_days": 2,
-      "calculated_at": "2026-01-08T15:53:23.717395",
+      "calculated_at": "2026-01-08T20:05:51.199208",
       "calculation_details": {
         "formula": "max(0, demand + safety_stock - available_stock)",
         "demand": 43,
@@ -85,7 +85,7 @@
       }
     },
     {
-      "order_id": "342f4851-93fc-45e7-bbbc-ea779744bf8c",
+      "order_id": "d174aa4b-4acc-48ff-b572-8b66099853e5",
       "order_date": "2025-01-18",
       "supplier_id": "SUP003",
       "supplier_name": "Hernandez-Knight",
@@ -101,7 +101,7 @@
       "unit_price": 1.27,
       "total_price": 60.96,
       "lead_time_days": 1,
-      "calculated_at": "2026-01-08T15:53:23.741066",
+      "calculated_at": "2026-01-08T20:05:51.223647",
       "calculation_details": {
         "formula": "max(0, demand + safety_stock - available_stock)",
         "demand": 42,
@@ -111,7 +111,7 @@
       }
     },
     {
-      "order_id": "a8729e08-3012-472b-ba9b-0a2d51bde56e",
+      "order_id": "98ec718a-e626-4fd1-9e55-a03e5560a507",
       "order_date": "2025-01-18",
       "supplier_id": "SUP003",
       "supplier_name": "Hernandez-Knight",
@@ -127,7 +127,7 @@
       "unit_price": 9.28,
       "total_price": 111.35999999999999,
       "lead_time_days": 1,
-      "calculated_at": "2026-01-08T15:53:23.787365",
+      "calculated_at": "2026-01-08T20:05:51.269339",
       "calculation_details": {
         "formula": "max(0, demand + safety_stock - available_stock)",
         "demand": 44,

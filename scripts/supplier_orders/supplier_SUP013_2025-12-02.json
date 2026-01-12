@@ -4,10 +4,10 @@
   "order_date": "2025-12-02",
   "total_items": 1,
   "total_value": 192.0,
-  "generated_at": "2026-01-04T10:27:12.234795",
+  "generated_at": "2026-01-10T20:43:30.714410",
   "items": [
     {
-      "order_id": "0f0b6e56-2ed3-407c-943e-2802057164d6",
+      "order_id": "b59a765d-1562-4425-be67-0ad5d85166fe",
       "order_date": "2025-12-02",
       "supplier_id": "SUP013",
       "supplier_name": "Harris Ltd",
@@ -23,7 +23,14 @@
       "unit_price": 16.0,
       "total_price": 192.0,
       "lead_time_days": 5,
-      "calculated_at": "2026-01-04T10:27:12.200346"
+      "calculated_at": "2026-01-10T20:43:30.505286",
+      "calculation_details": {
+        "formula": "max(0, demand + safety_stock - available_stock)",
+        "demand": 46,
+        "safety_stock": 10,
+        "available_stock": 50,
+        "calculation": "max(0, 46 + 10 - 50) = 6"
+      }
     }
   ]
 }
